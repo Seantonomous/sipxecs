@@ -27,6 +27,7 @@
 // CONSTANTS
 
 #define DIALOG_EVENT_TYPE "dialog"
+#define CALL_INFO_EVENT_TYPE "call-info"
 #define DIALOG_SLA_EVENT_TYPE "dialog;sla"
 #define DIALOG_EVENT_CONTENT_TYPE "application/dialog-info+xml"
 

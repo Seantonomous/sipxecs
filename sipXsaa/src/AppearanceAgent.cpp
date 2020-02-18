@@ -157,6 +157,12 @@ void AppearanceAgent::start()
    {
       Os::Logger::instance().log(FAC_SAA, PRI_CRIT, "AppearanceAgent:: enableEventType failed");
    }
+
+   if (!mSubscribeServer.enableEventType(CALL_INFO_EVENT_TYPE, NULL, NULL, NULL,
+         SipSubscribeServer::standardVersionCallback, FALSE))
+   {
+      Os::Logger::instance().log(FAC_SAA, PRI_CRIT, "AppearanceAgent:: enableEventType failed");
+   }
    mSubscribeServer.start();
 
    // Install a listener for MESSAGE requests into the server which queues
