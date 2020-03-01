@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE model PUBLIC "-//SIPFoundry//sipXconfig//Model specification 2.0//EN"
+  "http://www.sipfoundry.org/sipXconfig/dtd/setting_2_0.dtd">
+<model>
+  <type id="zip">
+    <file>
+      <contentType>application/zip</contentType>
+    </file>
+  </type>
+  <type id="binary">
+    <file>
+      <contentType>application/binary</contentType>
+    </file>
+  </type>
+  <group name="firmware">
+    <setting name="sip.zip">
+      <type>
+        <file>
+          <contentType>application/zip</contentType>
+        </file>
+      </type>
+    </setting>
+  	<setting name="version">
+      <type>
+        <enum>
+		    <option><value>11.1.1</value></option>
+        <option><value>11.1.2</value></option>
+        <option><value>11.2.1</value></option>
+        <option><value>11.3.1</value></option>
+        <option><value>11.3.X</value></option>
+        </enum>
+      </type>
+      <value>11.2.3</value>
+    </setting>
+    <setting name="type">
+      <type>
+        <enum>
+		    <option><value>8845_8865</value></option>
+        <option><value>88XX</value></option>
+        </enum>
+      </type>
+      <value>11.2.3</value>
+    </setting>
+    <setting name="allowMultipleUploads" hidden="yes">
+      <type>
+        <boolean></boolean>
+      </type>
+      <value>0</value>
+    </setting>
+  </group>
+</model>

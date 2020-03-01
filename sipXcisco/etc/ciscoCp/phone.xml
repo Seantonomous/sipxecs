@@ -1,0 +1,3287 @@
+<?xml version="1.0"?>
+<!DOCTYPE model PUBLIC "-//SIPFoundry//sipXconfig//Model specification 2.0//EN"
+  "http://www.sipfoundry.org/sipXconfig/dtd/setting_2_0.dtd" [
+  <!ENTITY types SYSTEM "types.xml">
+  ]>
+<model>
+  &types;
+
+  <group name="System">
+    <setting name="Restricted_Access_Domains" advanced="yes">
+      <label>Restricted Access Domains</label>
+      <profileName>System/System_Configuration</profileName>
+      <value />
+    </setting>
+    <setting name="Enable_Web_Server">
+      <label>Enable Web Server</label>
+      <profileName>System/System_Configuration</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Provisioning_Protocol">
+      <label>Provisioning Protocol</label>
+      <profileName>System/System_Configuration</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>http</value>
+          </option>
+          <option>
+            <value>https</value>
+          </option>
+          <option>
+            <value>tftp</value>
+          </option>
+        </enum>
+      </type>
+      <value>http</value>
+    </setting>
+    <setting name="Provisioning_Server_Address">
+      <label>Alternate Server Name</label>
+      <profileName>System/System_Configuration</profileName>
+      <value />
+    </setting>
+    <setting name="Enable_Protocol">
+      <label>Enable Protocol</label>
+      <profileName>System/System_Configuration</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>Http</value>
+          </option>
+          <option>
+            <value>Https</value>
+          </option>
+        </enum>
+      </type>
+      <value>Http</value>
+    </setting>
+    <setting name="Enable_Direct_Action">
+      <label>Enable Direct Action</label>
+      <profileName>System/System_Configuration</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Session_Max_Timeout">
+      <label>Session Max Timeout</label>
+      <profileName>System/System_Configuration</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>3600</value>
+    </setting>
+    <setting name="Session_Idle_Timeout">
+      <label>Session Idle Timeout</label>
+      <profileName>System/System_Configuration</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>3600</value>
+    </setting>
+    <setting name="Web_Server_Port" advanced="yes">
+      <label>Web Server Port</label>
+      <profileName>System/System_Configuration</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>80</value>
+    </setting>
+    <setting name="Enable_Web_Admin_Access" advanced="yes">
+      <label>Enable Web Admin Access</label>
+      <profileName>System/System_Configuration</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Admin_Passwd" advanced="yes">
+      <label>Admin Passwd</label>
+      <profileName>System/System_Configuration</profileName>
+      <type>
+        <string password="yes" />
+      </type>
+      <value />
+    </setting>
+    <setting name="User_Password">
+      <label>User Password</label>
+      <profileName>System/System_Configuration</profileName>
+      <type>
+        <string password="yes" />
+      </type>
+      <value />
+    </setting>
+    <setting name="User_Password_Prompt">
+      <label>User password Prompt</label>
+      <profileName>System/System_Configuration</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Block_Nonproxy_SIP">
+      <label>Block Non-Proxy SIP</label>
+      <profileName>System/System_Configuration</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+
+    <setting name="Phone-UI-readonly">
+      <label>Phone UI Readonly</label>
+      <profileName>System/System_Configuration</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="Phone-UI-User-Mode">
+      <label>Phone UI User Mode</label>
+      <profileName>System/System_Configuration</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+
+    <!--Network Settings -->
+    <setting name="IP_Mode">
+      <label>IP Mode</label>
+      <profileName>System/System_Configuration</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>Dual Mode</value>
+          </option>
+          <option>
+            <value>IPv4 Only</value>
+          </option>
+          <option>
+            <value>IPv6 Only</value>
+          </option>
+        </enum>
+      </type>
+      <value>Dual Mode</value>
+    </setting>
+
+    <!--IPv4 Settings -->
+    <setting name="Connection_Type">
+      <label>IPv4 Connection Type</label>
+      <profileName>System/Internet_Connection_Type_</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>DHCP</value>
+          </option>
+          <option>
+            <value>Static IP</value>
+          </option>
+          <option>
+            <value>PPPOE</value>
+          </option>
+        </enum>
+      </type>
+      <value>DHCP</value>
+    </setting>
+
+    <setting name="Static_IP">
+      <label>IPv4 Static IP</label>
+      <profileName>System/_Static_IP_Settings</profileName>
+      <value />
+    </setting>
+    <setting name="NetMask">
+      <label>IPv4 NetMask</label>
+      <profileName>System/_Static_IP_Settings</profileName>
+      <value />
+    </setting>
+    <setting name="Gateway">
+      <label>IPv4 Gateway</label>
+      <profileName>System/_Static_IP_Settings</profileName>
+      <value />
+    </setting>
+    <setting name="Primary_DNS">
+      <label>IPv4 Primary DNS</label>
+      <profileName>System/Optional_Network_Configuration</profileName>
+      <value />
+    </setting>
+    <setting name="Secondary_DNS">
+      <label>IPv4 Secondary DNS</label>
+      <profileName>System/Optional_Network_Configuration</profileName>
+      <value />
+    </setting>
+
+    <!--IPv6 Settings -->
+    <setting name="IPv6_Connection_Type">
+      <label>IPv6 Connection Type</label>
+      <profileName>System/Internet_Connection_Type_</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>DHCP</value>
+          </option>
+          <option>
+            <value>Static IP</value>
+          </option>
+          <option>
+            <value>PPPOE</value>
+          </option>
+        </enum>
+      </type>
+      <value>DHCP</value>
+    </setting>
+
+    <setting name="IPv6_Static_IP">
+      <label>IPv6 Static IP</label>
+      <profileName>System/_Static_IP_Settings</profileName>
+      <value />
+    </setting>
+    <setting name="Prefix_Length">
+      <label>IPv6 Prefix Length</label>
+      <profileName>System/_Static_IP_Settings</profileName>
+      <value>0</value>
+    </setting>
+    <setting name="IPv6_Gateway">
+      <label>IPv6 Gateway</label>
+      <profileName>System/_Static_IP_Settings</profileName>
+      <value />
+    </setting>
+    <setting name="IPv6_Primary_DNS">
+      <label>IPv6 Primary DNS</label>
+      <profileName>System/Optional_Network_Configuration</profileName>
+      <value />
+    </setting>
+    <setting name="IPv6_Secondary_DNS">
+      <label>IPv4 Secondary DNS</label>
+      <profileName>System/Optional_Network_Configuration</profileName>
+      <value />
+    </setting>
+    <setting name="Broadcast_Echo">
+      <label>IPv6 Broadcast Echo</label>
+      <profileName>System/Optional_Network_Configuration</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>Disabled</value>
+          </option>
+          <option>
+            <value>Enabled</value>
+          </option>
+        </enum>
+      </type>
+      <value>Disabled</value>
+    </setting>
+    <setting name="Auto_Config">
+      <label>IPv6 Auto Config</label>
+      <profileName>System/Optional_Network_Configuration</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>Disabled</value>
+          </option>
+          <option>
+            <value>Enabled</value>
+          </option>
+        </enum>
+      </type>
+      <value>Enabled</value>
+    </setting>
+
+    <!--802.1X Settings -->
+    <setting name="Enable_802.1X_Authentication">
+      <label>Enable 802.1X Authentication</label>
+      <type>
+        <enum>
+          <option>
+            <value>Disabled</value>
+          </option>
+          <option>
+            <value>Enabled</value>
+          </option>
+        </enum>
+      </type>
+      <value>Disabled</value>
+    </setting>
+
+    <setting name="PPPoE_Login_Name">
+      <label>PPPoE Login Name</label>
+      <profileName>System/_PPPoE_Settings</profileName>
+      <value />
+    </setting>
+    <setting name="PPPoE_Login_Password">
+      <label>PPPoE Login Password</label>
+      <profileName>System/_PPPoE_Settings</profileName>
+      <type>
+        <string password="yes" />
+      </type>
+      <value />
+    </setting>
+    <setting name="PPPoE_Service_Name" advanced="yes">
+      <label>PPPoE Service Name</label>
+      <profileName>System/_PPPoE_Settings</profileName>
+      <value />
+    </setting>
+
+    <setting name="HostName">
+      <label>HostName</label>
+      <profileName>System/Optional_Network_Configuration</profileName>
+      <value />
+    </setting>
+    <setting name="Domain">
+      <label>Domain</label>
+      <profileName>System/Optional_Network_Configuration</profileName>
+      <value />
+    </setting>
+    <setting name="DNS_Server_Order" advanced="yes">
+      <label>DNS Server Order</label>
+      <profileName>System/System_Configuration</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>DHCP,Manual</value>
+          </option>
+          <option>
+            <value>Manual</value>
+          </option>
+          <option>
+            <value>Manual,DHCP</value>
+          </option>
+        </enum>
+      </type>
+      <value>DHCP,Manual</value>
+    </setting>
+    <setting name="DNS_Query_Mode">
+      <label>DNS Query Mode</label>
+      <profileName>System/System_Configuration</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>Parallel</value>
+          </option>
+          <option>
+            <value>Sequential</value>
+          </option>
+        </enum>
+      </type>
+      <value>Parallel</value>
+    </setting>
+    <setting name="DNS_Caching_Enable">
+      <label>Enable DNS Caching</label>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Switch_Port_Config">
+      <label>Switch Port Configuration</label>
+      <profileName>System/System_Configuration</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>AUTO</value>
+          </option>
+          <option>
+            <value>10 HALF</value>
+          </option>
+          <option>
+            <value>10 FULL</value>
+          </option>
+          <option>
+            <value>100 HALF</value>
+          </option>
+          <option>
+            <value>100 FULL</value>
+          </option>
+          <option>
+            <value>1000 FULL</value>
+          </option>
+        </enum>
+      </type>
+      <value>AUTO</value>
+    </setting>
+    <setting name="PC_Port_Config">
+      <label>PC Port Configuration</label>
+      <profileName>System/System_Configuration</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>AUTO</value>
+          </option>
+          <option>
+            <value>10 HALF</value>
+          </option>
+          <option>
+            <value>10 FULL</value>
+          </option>
+          <option>
+            <value>100 HALF</value>
+          </option>
+          <option>
+            <value>100 FULL</value>
+          </option>
+          <option>
+            <value>1000 FULL</value>
+          </option>
+        </enum>
+      </type>
+      <value>AUTO</value>
+    </setting>
+    <setting name="PC_PORT_Enable">
+      <label>PC Port Enable</label>
+      <profileName>System/System_Configuration</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Enable_PC_Port_Mirror">
+      <label>PC Port Mirror</label>
+      <profileName>System/System_Configuration</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="Syslog_Server">
+      <label>Syslog Server</label>
+      <profileName>System/Optional_Network_Configuration</profileName>
+      <value />
+    </setting>
+    <setting name="Syslog_Identifier">
+      <label>Syslog Identifier</label>
+      <profileName>System/Optional_Network_Configuration</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>$MA</value>
+            <label>Mac Address (lowercase)</label>
+          </option>
+          <option>
+            <value>$MAU</value>
+            <label>Mac Address (uppercase)</label>
+          </option>
+          <option>
+            <value>$MAC</value>
+            <label>Mac Address (lowercase, colon-separated)</label>
+          </option>
+          <option>
+            <value>$SN</value>
+            <label>Serial Number</label>
+          </option>
+        </enum>
+      </type>
+      <value>$MA</value>
+    </setting>
+    <setting name="Debug_Level">
+      <label>Debug Level</label>
+      <profileName>System/System_Configuration</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>EMERGENCY</value>
+          </option>
+          <option>
+            <value>ALERT</value>
+          </option>
+          <option>
+            <value>CRITICAL</value>
+          </option>
+          <option>
+            <value>ERROR</value>
+          </option>
+          <option>
+            <value>WARNING</value>
+          </option>
+          <option>
+            <value>NOTICE</value>
+          </option>
+          <option>
+            <value>INFO</value>
+          </option>
+          <option>
+            <value>DEBUG</value>
+          </option>
+        </enum>
+      </type>
+      <value>NOTICE</value>
+    </setting>
+    <setting name="Primary_NTP_Server" advanced="yes">
+      <label>Primary NTP Server</label>
+      <profileName>System/Optional_Network_Configuration</profileName>
+      <value />
+    </setting>
+    <setting name="Secondary_NTP_Server" advanced="yes">
+      <label>Secondary NTP Server</label>
+      <profileName>System/Optional_Network_Configuration</profileName>
+      <value />
+    </setting>
+    <setting name="Enable_SSLv3">
+      <label>Enable SSLv3</label>
+      <profileName>System/Optional_Network_Configuration</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+
+    <setting name="Enable_VLAN" advanced="yes">
+      <label>Enable VLAN</label>
+      <profileName>System/VLAN_Settings</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="VLAN_ID" advanced="yes">
+      <label>VLAN ID</label>
+      <profileName>System/VLAN_Settings</profileName>
+      <value />
+    </setting>
+    <setting name="Enable_CDP" advanced="yes">
+      <label>Enable CDP</label>
+      <profileName>System/VLAN_Settings</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="PC_Port_VLAN_Highest_Priority">
+      <label>PC Port VLAN Highest Priority</label>
+      <profileName>System/VLAN_Settings</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>0</value>
+          </option>
+          <option>
+            <value>1</value>
+          </option>
+          <option>
+            <value>2</value>
+          </option>
+          <option>
+            <value>3</value>
+          </option>
+          <option>
+            <value>4</value>
+          </option>
+          <option>
+            <value>5</value>
+          </option>
+          <option>
+            <value>6</value>
+          </option>
+          <option>
+            <value>7</value>
+          </option>
+          <option>
+            <value>No Limit</value>
+          </option>
+        </enum>
+      </type>
+      <value>No Limit</value>
+    </setting>
+    <setting name="Enable_PC_Port_VLAN_Tagging" advanced="yes">
+      <label>Enable PC Port VLAN Tagging</label>
+      <profileName>System/VLAN_Settings</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="PC_Port_VLAN_ID" advanced="yes">
+      <label>PC Port VLAN ID</label>
+      <profileName>System/VLAN_Settings</profileName>
+      <value />
+    </setting>
+    <setting name="Asset_ID">
+      <label>Asset ID</label>
+      <profileName>System/Inventory_Settings</profileName>
+      <value />
+    </setting>
+
+    <setting name="LDAP_Dir_Enable">
+      <label>LDAP Directory Enabled</label>
+      <profileName>System/LDAP</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="LDAP_Corp_Dir_Name">
+      <label>LDAP Directory Name</label>
+      <profileName>System/LDAP</profileName>
+      <value />
+    </setting>
+    <setting name="LDAP_Server">
+      <label>LDAP Server</label>
+      <profileName>System/LDAP</profileName>
+      <value />
+    </setting>
+    <setting name="LDAP_Search_Base">
+      <label>LDAP Search Base</label>
+      <profileName>System/LDAP</profileName>
+      <value />
+    </setting>
+    <setting name="LDAP_Client_DN">
+      <label>LDAP Domain Name</label>
+      <profileName>System/LDAP</profileName>
+      <value />
+    </setting>
+    <setting name="LDAP_Username">
+      <label>LDAP Username</label>
+      <profileName>System/LDAP</profileName>
+      <value />
+    </setting>
+    <setting name="LDAP_Password">
+      <label>LDAP Password</label>
+      <profileName>System/LDAP</profileName>
+      <type>
+        <string password="yes" />
+      </type>
+      <value />
+    </setting>
+    <setting name="LDAP_Auth_Method">
+      <label>LDAP Authentication Method</label>
+      <profileName>System/LDAP</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>DIGEST-MD5</value>
+          </option>
+          <option>
+            <value>Simple</value>
+          </option>
+          <option>
+            <value>None</value>
+          </option>
+        </enum>
+      </type>
+      <value>DIGEST-MD5</value>
+    </setting>
+    <setting name="LDAP_First_Name_Filter">
+      <label>LDAP First Name Filter</label>
+      <profileName>System/LDAP</profileName>
+      <value />
+    </setting>
+    <setting name="LDAP_Last_Name_Filter">
+      <label>LDAP Last Name Filter</label>
+      <profileName>System/LDAP</profileName>
+      <value />
+    </setting>
+    <setting name="LDAP_Search_Item_3">
+      <label>LDAP Search Item 3</label>
+      <profileName>System/LDAP</profileName>
+      <value />
+    </setting>
+    <setting name="LDAP_Item_3_Filter">
+      <label>LDAP Search Item 3 Filter</label>
+      <profileName>System/LDAP</profileName>
+      <value />
+    </setting>
+    <setting name="LDAP_Search_Item_4">
+      <label>LDAP Search Item 4</label>
+      <profileName>System/LDAP</profileName>
+      <value />
+    </setting>
+    <setting name="LDAP_Item_4_Filter">
+      <label>LDAP Search Item 4 Filter</label>
+      <profileName>System/LDAP</profileName>
+      <value />
+    </setting>
+    <setting name="LDAP_Display_Attrs">
+      <label>LDAP Display Attributes</label>
+      <profileName>System/LDAP</profileName>
+      <value />
+    </setting>
+    <setting name="LDAP_Number_Mapping">
+      <label>LDAP Number Mapping</label>
+      <profileName>System/LDAP</profileName>
+      <value />
+    </setting>
+  </group>
+
+  <group name="SIP_Parameters">
+    <setting name="Max_Forward">
+      <label>Max Forward</label>
+      <profileName>SIP_Parameters</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>70</value>
+    </setting>
+    <setting name="Max_Redirection">
+      <label>Max Redirection</label>
+      <profileName>SIP_Parameters</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>5</value>
+    </setting>
+    <setting name="Max_Auth">
+      <label>Max Auth</label>
+      <profileName>SIP_Parameters</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>2</value>
+    </setting>
+    <setting name="SIP_User_Agent_Name">
+      <label>SIP User Agent Name</label>
+      <profileName>SIP_Parameters</profileName>
+      <value>$VERSION</value>
+    </setting>
+    <setting name="SIP_Server_Name">
+      <label>SIP Server Name</label>
+      <profileName>SIP_Parameters</profileName>
+      <value>$VERSION</value>
+    </setting>
+    <setting name="SIP_Reg_User_Agent_Name">
+      <label>SIP Reg User Agent Name</label>
+      <profileName>SIP_Parameters</profileName>
+      <value />
+    </setting>
+    <setting name="SIP_Accept_Language">
+      <label>SIP Accept Language</label>
+      <profileName>SIP_Parameters</profileName>
+      <value />
+    </setting>
+    <setting name="DTMF_Relay_MIME_Type">
+      <label>DTMF Relay MIME Type</label>
+      <profileName>SIP_Parameters</profileName>
+      <value>application/dtmf-relay</value>
+    </setting>
+    <setting name="Hook_Flash_MIME_Type">
+      <label>Hook Flash MIME Type</label>
+      <profileName>SIP_Parameters</profileName>
+      <value>application/hook-flash</value>
+    </setting>
+    <setting name="Remove_Last_Reg">
+      <label>Remove Last Reg</label>
+      <profileName>SIP_Parameters</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="Use_Compact_Header">
+      <label>Use Compact Header</label>
+      <profileName>SIP_Parameters</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="Escape_Display_Name">
+      <label>Escape Display Name</label>
+      <profileName>SIP_Parameters</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="SIP-B_Enable">
+      <label>SIP-B Enable</label>
+      <profileName>SIP_Parameters</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="Talk_Package">
+      <label>Talk Package</label>
+      <profileName>SIP_Parameters</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="Hold_Package">
+      <label>Hold Package</label>
+      <profileName>SIP_Parameters</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="Conference_Package">
+      <label>Conference Package</label>
+      <profileName>SIP_Parameters</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="Notify_Conference">
+      <label>Notify Conference</label>
+      <profileName>SIP_Parameters</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="RFC_2543_Call_Hold">
+      <label>RFC 2543 Call Hold</label>
+      <profileName>SIP_Parameters</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Random_REG_CID_On_Reboot">
+      <label>Random REG CID On Reboot</label>
+      <profileName>SIP_Parameters</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="Mark_All_AVT_Packets">
+      <label>Mark All AVT Packets</label>
+      <profileName>SIP_Parameters</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="SIP_TCP_Port_Min">
+      <label>SIP TCP Port Min</label>
+      <profileName>SIP/SIP_Parameters</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>5060</value>
+    </setting>
+    <setting name="SIP_TCP_Port_Max">
+      <label>SIP TCP Port Max</label>
+      <profileName>SIP/SIP_Parameters</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>5080</value>
+    </setting>
+    <setting name="CTI_Enable">
+      <label>CTI Enable</label>
+      <profileName>SIP/SIP_Parameters</profileName>
+      <type refid="yes-no" />
+      <value>No</value>
+    </setting>
+    <setting name="Caller_ID_Header">
+      <label>Caller ID Header</label>
+      <profileName>SIP/SIP_Parameters</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>PAID-RPID-FROM</value>
+          </option>
+          <option>
+            <value>PAID-FROM</value>
+          </option>
+          <option>
+            <value>RPID-PAID-FROM</value>
+          </option>
+          <option>
+            <value>RPID-FROM</value>
+          </option>
+          <option>
+            <value>FROM</value>
+          </option>
+        </enum>
+      </type>
+      <value>PAID-RPID-FROM</value>
+    </setting>
+    <setting name="SRTP_Method">
+      <label>SRTP Method</label>
+      <profileName>SIP/SIP_Parameters</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>x-sipura</value>
+          </option>
+          <option>
+            <value>s-descriptor</value>
+          </option>
+        </enum>
+      </type>
+    </setting>
+    <setting name="Hold_Target_Before_REFER">
+      <label>Hold Target Before REFER</label>
+      <profileName>SIP/SIP_Parameters</profileName>
+      <type refid="yes-no" />
+      <value>No</value>
+    </setting>
+  </group>
+
+  <group name="SIP_Timer_Values">
+    <setting name="SIP_T1">
+      <label>SIP T1</label>
+      <profileName>SIP/SIP_Timer_Values__sec_</profileName>
+      <value>.5</value>
+    </setting>
+    <setting name="SIP_T2">
+      <label>SIP T2</label>
+      <profileName>SIP/SIP_Timer_Values__sec_</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>4</value>
+    </setting>
+    <setting name="SIP_T4">
+      <label>SIP T4</label>
+      <profileName>SIP/SIP_Timer_Values__sec_</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>5</value>
+    </setting>
+    <setting name="SIP_Timer_B">
+      <label>SIP Timer B</label>
+      <profileName>SIP/SIP_Timer_Values__sec_</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>16</value>
+    </setting>
+    <setting name="SIP_Timer_F">
+      <label>SIP Timer F</label>
+      <profileName>SIP/SIP_Timer_Values__sec_</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>16</value>
+    </setting>
+    <setting name="SIP_Timer_H">
+      <label>SIP Timer H</label>
+      <profileName>SIP/SIP_Timer_Values__sec_</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>16</value>
+    </setting>
+    <setting name="SIP_Timer_D">
+      <label>SIP Timer D</label>
+      <profileName>SIP/SIP_Timer_Values__sec_</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>16</value>
+    </setting>
+    <setting name="SIP_Timer_J">
+      <label>SIP Timer J</label>
+      <profileName>SIP/SIP_Timer_Values__sec_</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>16</value>
+    </setting>
+    <setting name="INVITE_Expires">
+      <label>INVITE Expires</label>
+      <profileName>SIP/SIP_Timer_Values__sec_</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>240</value>
+    </setting>
+    <setting name="ReINVITE_Expires">
+      <label>ReINVITE Expires</label>
+      <profileName>SIP/SIP_Timer_Values__sec_</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>30</value>
+    </setting>
+    <setting name="Reg_Min_Expires">
+      <label>Reg Min Expires</label>
+      <profileName>SIP/SIP_Timer_Values__sec_</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>1</value>
+    </setting>
+    <setting name="Reg_Max_Expires">
+      <label>Reg Max Expires</label>
+      <profileName>SIP/SIP_Timer_Values__sec_</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>7200</value>
+    </setting>
+    <setting name="Reg_Retry_Intvl">
+      <label>Reg Retry Intvl</label>
+      <profileName>SIP/SIP_Timer_Values__sec_</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>30</value>
+    </setting>
+    <setting name="Reg_Retry_Long_Intvl">
+      <label>Reg Retry Long Intvl</label>
+      <profileName>SIP/SIP_Timer_Values__sec_</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>1200</value>
+    </setting>
+    <setting name="Reg_Retry_Random_Delay">
+      <label>Reg Retry Random Delay</label>
+      <profileName>SIP/SIP_Timer_Values__sec_</profileName>
+      <type>
+        <integer />
+      </type>
+      <value />
+    </setting>
+    <setting name="Reg_Retry_Long_Random_Delay">
+      <label>Reg Retry Long Random Delay</label>
+      <profileName>SIP/SIP_Timer_Values__sec_</profileName>
+      <type>
+        <integer />
+      </type>
+      <value />
+    </setting>
+    <setting name="Reg_Retry_Intvl_Cap">
+      <label>Reg Retry Intvl Cap</label>
+      <profileName>SIP/SIP_Timer_Values__sec_</profileName>
+      <type>
+        <integer />
+      </type>
+      <value />
+    </setting>
+    <setting name="Sub_Min_Expires">
+      <label>Sub Min Expires</label>
+      <profileName>SIP/SIP_Timer_Values__sec_</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>10</value>
+    </setting>
+    <setting name="Sub_Max_Expires">
+      <label>Sub Max Expires</label>
+      <profileName>SIP/SIP_Timer_Values__sec_</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>7200</value>
+    </setting>
+    <setting name="Sub_Retry_Intvl">
+      <label>Sub Retry Intvl</label>
+      <profileName>SIP/SIP_Timer_Values__sec_</profileName>
+      <value>10</value>
+    </setting>
+  </group>
+
+  <group name="Response_Status_Code_Handling">
+    <setting name="SIT1_RSC">
+      <label>SIT1 RSC</label>
+      <profileName>SIP/Response_Status_Code_Handling</profileName>
+      <value />
+    </setting>
+    <setting name="SIT2_RSC">
+      <label>SIT2 RSC</label>
+      <profileName>SIP/Response_Status_Code_Handling</profileName>
+      <value />
+    </setting>
+    <setting name="SIT3_RSC">
+      <label>SIT3 RSC</label>
+      <profileName>SIP/Response_Status_Code_Handling</profileName>
+      <value />
+    </setting>
+    <setting name="SIT4_RSC">
+      <label>SIT4 RSC</label>
+      <profileName>SIP/Response_Status_Code_Handling</profileName>
+      <value />
+    </setting>
+  </group>
+
+  <group name="RTP_Parameters">
+    <setting name="RTP_Port_Min">
+      <label>RTP Port Min</label>
+      <profileName>SIP/RTP_Parameters</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>16384</value>
+    </setting>
+    <setting name="RTP_Port_Max">
+      <label>RTP Port Max</label>
+      <profileName>SIP/RTP_Parameters</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>16482</value>
+    </setting>
+    <setting name="RTP_Packet_Size" advanced="yes">
+      <label>RTP Packet Size</label>
+      <profileName>SIP/RTP_Parameters</profileName>
+      <value>0.030</value>
+    </setting>
+    <setting name="Max_RTP_ICMP_Err" advanced="yes">
+      <label>Max RTP ICMP Err</label>
+      <profileName>SIP/RTP_Parameters</profileName>
+      <value>0</value>
+    </setting>
+    <setting name="RTCP_Tx_Interval" advanced="yes">
+      <label>RTCP Tx Interval</label>
+      <profileName>SIP/RTP_Parameters</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>0</value>
+    </setting>
+    <setting name="SDP_IP_Preference">
+      <label>SDP IP Preference</label>
+      <profileName>SIP/RTP_Parameters</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>IPv4</value>
+          </option>
+          <option>
+            <value>IPv6</value>
+          </option>
+        </enum>
+      </type>
+      <value>IPv4</value>
+    </setting>
+    <setting name="No_UDP_Checksum" advanced="yes">
+      <label>No UDP Checksum</label>
+      <profileName>SIP/RTP_Parameters</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="Symmetric_RTP" advanced="yes">
+      <label>Symmetric RTP</label>
+      <profileName>SIP/RTP_Parameters</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="Stats_In_BYE" advanced="yes">
+      <label>Stats In BYE</label>
+      <profileName>SIP/RTP_Parameters</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+  </group>
+
+  <group name="SDP_Payload_Types">
+    <setting name="AVT_Dynamic_Payload">
+      <label>AVT Dynamic Payload</label>
+      <profileName>SIP/SDP_Payload_Types</profileName>
+      <value>101</value>
+    </setting>
+    <setting name="INFOREQ_Dynamic_Payload">
+      <label>INFOREQ Dynamic Payload</label>
+      <profileName>SIP/SDP_Payload_Types</profileName>
+      <value />
+    </setting>
+    <setting name="G726r16_Dynamic_Payload">
+      <label>G726r16 Dynamic Payload</label>
+      <profileName>SIP/SDP_Payload_Types</profileName>
+      <value>98</value>
+    </setting>
+    <setting name="G726r24_Dynamic_Payload">
+      <label>G726r24 Dynamic Payload</label>
+      <profileName>SIP/SDP_Payload_Types</profileName>
+      <value>97</value>
+    </setting>
+    <setting name="G726r32_Dynamic_Payload">
+      <label>G726r32 Dynamic Payload</label>
+      <profileName>SIP/SDP_Payload_Types</profileName>
+      <value>2</value>
+    </setting>
+    <setting name="G726r40_Dynamic_Payload">
+      <label>G726r40 Dynamic Payload</label>
+      <profileName>SIP/SDP_Payload_Types</profileName>
+      <value>96</value>
+    </setting>
+    <setting name="G729b_Dynamic_Payload">
+      <label>G729b Dynamic Payload</label>
+      <profileName>SIP/SDP_Payload_Types</profileName>
+      <value>99</value>
+    </setting>
+  </group>
+
+  <group name="NAT_Parameters">
+    <setting name="Handle_VIA_received" advanced="yes">
+      <label>Handle VIA received</label>
+      <profileName>SIP/NAT_Support_Parameters</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="Handle_VIA_rport" advanced="yes">
+      <label>Handle VIA rport</label>
+      <profileName>SIP/NAT_Support_Parameters</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="Insert_VIA_received" advanced="yes">
+      <label>Insert VIA received</label>
+      <profileName>SIP/NAT_Support_Parameters</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="Insert_VIA_rport" advanced="yes">
+      <label>Insert VIA rport</label>
+      <profileName>SIP/NAT_Support_Parameters</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="Substitute_VIA_Addr" advanced="yes">
+      <label>Substitute VIA Addr</label>
+      <profileName>SIP/NAT_Support_Parameters</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="Send_Resp_To_Src_Port" advanced="yes">
+      <label>Send Resp To Src Port</label>
+      <profileName>SIP/NAT_Support_Parameters</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="STUN_Enable" advanced="yes">
+      <label>STUN Enable</label>
+      <profileName>SIP/NAT_Support_Parameters</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="STUN_Test_Enable" advanced="yes">
+      <label>STUN Test Enable</label>
+      <profileName>SIP/NAT_Support_Parameters</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="STUN_Server" advanced="yes">
+      <label>STUN Server</label>
+      <profileName>SIP/NAT_Support_Parameters</profileName>
+      <value />
+    </setting>
+    <setting name="EXT_IP" advanced="yes">
+      <label>EXT IP</label>
+      <profileName>SIP/NAT_Support_Parameters</profileName>
+      <value />
+    </setting>
+    <setting name="EXT_RTP_Port_Min" advanced="yes">
+      <label>EXT RTP Port Min</label>
+      <profileName>SIP/NAT_Support_Parameters</profileName>
+      <type>
+        <integer />
+      </type>
+      <value />
+    </setting>
+    <setting name="NAT_Keep_Alive_Intvl" advanced="yes">
+      <label>NAT Keep Alive Intvl</label>
+      <profileName>SIP/NAT_Support_Parameters</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>15</value>
+    </setting>
+  </group>
+
+  <group name="Provisioning">
+    <setting name="Provision_Enable" hidden="yes">
+      <label>Provision Enable</label>
+      <profileName>Provisioning/Configuration_Profile</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Resync_On_Reset" advanced="yes">
+      <label>Resync On Reset</label>
+      <profileName>Provisioning/Configuration_Profile</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Resync_Random_Delay" advanced="yes">
+      <label>Resync Random Delay</label>
+      <profileName>Provisioning/Configuration_Profile</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>2</value>
+    </setting>
+    <setting name="Resync_At_HHmm" advanced="yes">
+      <label>Resync At HHmm</label>
+      <profileName>Provisioning/Configuration_Profile</profileName>
+      <value />
+    </setting>
+    <setting name="Resync_At_Random_Delay" advanced="yes">
+      <label>Resync At Random Delay</label>
+      <profileName>Provisioning/Configuration_Profile</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>600</value>
+    </setting>
+    <setting name="Resync_Periodic" advanced="yes">
+      <label>Resync Periodic</label>
+      <profileName>Provisioning/Configuration_Profile</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>0</value>
+    </setting>
+    <setting name="Resync_Error_Retry_Delay" advanced="yes">
+      <label>Resync Error Retry Delay</label>
+      <profileName>Provisioning/Configuration_Profile</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>3600</value>
+    </setting>
+    <setting name="Forced_Resync_Delay" advanced="yes">
+      <label>Forced Resync Delay</label>
+      <profileName>Provisioning/Configuration_Profile</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>14400</value>
+    </setting>
+    <setting name="Resync_From_SIP" advanced="yes">
+      <label>Resync From SIP</label>
+      <profileName>Provisioning/Configuration_Profile</profileName>
+      <value>yes</value>
+    </setting>
+    <setting name="Resync_After_Upgrade_Attempt" advanced="yes">
+      <label>Resync After Upgrade Attempt</label>
+      <profileName>Provisioning/Configuration_Profile</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Resync_Trigger_1" advanced="yes">
+      <label>Resync Trigger 1</label>
+      <profileName>Provisioning/Configuration_Profile</profileName>
+      <value />
+    </setting>
+    <setting name="Resync_Trigger_2" advanced="yes">
+      <label>Resync Trigger 2</label>
+      <profileName>Provisioning/Configuration_Profile</profileName>
+      <value />
+    </setting>
+    <setting name="Resync_Fails_On_FNF" advanced="yes">
+      <label>Resync Fails On FNF</label>
+      <profileName>Provisioning/Configuration_Profile</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Profile_Rule" hidden="yes" advanced="yes">
+      <label>Profile Rule</label>
+      <profileName>Provisioning/Configuration_Profile</profileName>
+      <value></value>
+    </setting>
+    <setting name="Profile_Rule_B" advanced="yes">
+      <label>Profile Rule B</label>
+      <profileName>Provisioning/Configuration_Profile</profileName>
+      <value />
+    </setting>
+    <setting name="Profile_Rule_C" advanced="yes">
+      <label>Profile Rule C</label>
+      <profileName>Provisioning/Configuration_Profile</profileName>
+      <value />
+    </setting>
+    <setting name="Profile_Rule_D" advanced="yes">
+      <label>Profile Rule D</label>
+      <profileName>Provisioning/Configuration_Profile</profileName>
+      <value />
+    </setting>
+    <setting name="DHCP_Option_To_Use" advanced="yes">
+      <label>DHCP Option To Use</label>
+      <profileName>Provisioning/Configuration_Profile</profileName>
+      <value>66,160,159,150</value>
+    </setting>
+    <setting name="DHCPv6_Option_To_Use" advanced="yes">
+      <label>DHCPv6 Option To Use</label>
+      <profileName>Provisioning/Configuration_Profile</profileName>
+      <value>17,160,159</value>
+    </setting>
+    <setting name="Log_Request_Msg" advanced="yes">
+      <label>Log Resync Request Msg</label>
+      <profileName>Provisioning/Configuration_Profile</profileName>
+      <value>$PN $MAC -- Requesting resync $SCHEME://$SERVIP:$PORT$PATH</value>
+    </setting>
+    <setting name="Log_Success_Msg" advanced="yes">
+      <label>Log Resync Success Msg</label>
+      <profileName>Provisioning/Configuration_Profile</profileName>
+      <value>$PN $MAC -- Successful resync $SCHEME://$SERVIP:$PORT$PATH</value>
+    </setting>
+    <setting name="Log_Failure_Msg" advanced="yes">
+      <label>Log Resync Failure Msg</label>
+      <profileName>Provisioning/Configuration_Profile</profileName>
+      <value>$PN $MAC -- Resync failed: $ERR</value>
+    </setting>
+    <setting name="HTTP_Report_Method">
+      <label>HTTP Report Method</label>
+      <profileName>Provisioning/Configuration_Profile</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>POST</value>
+          </option>
+          <option>
+            <value>PUT</value>
+          </option>
+        </enum>
+      </type>
+      <value>POST</value>
+    </setting>
+    <setting name="User_Configurable_Resync">
+      <label>User Configurable Resync</label>
+      <profileName>Provisioning/Configuration_Profile</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="Report_Rule" advanced="yes">
+      <label>Report Rule</label>
+      <profileName>Provisioning/Configuration_Profile</profileName>
+      <value />
+    </setting>
+    <setting name="Upgrade_Enable" advanced="yes">
+      <label>Upgrade Enable</label>
+      <profileName>Provisioning/Firmware_Upgrade</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Upgrade_Error_Retry_Delay" advanced="yes">
+      <label>Upgrade Error Retry Delay</label>
+      <profileName>Provisioning/Firmware_Upgrade</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>3600</value>
+    </setting>
+    <setting name="Downgrade_Rev_Limit" advanced="yes">
+      <label>Downgrade Rev Limit</label>
+      <profileName>Provisioning/Firmware_Upgrade</profileName>
+    </setting>
+    <setting name="Upgrade_Rule" hidden="yes">
+      <label>Upgrade Rule</label>
+      <profileName>Provisioning/Firmware_Upgrade</profileName>
+    </setting>
+    <setting name="Log_Upgrade_Request_Msg" advanced="yes">
+      <label>Log Upgrade Request Msg</label>
+      <profileName>Provisioning/Firmware_Upgrade</profileName>
+      <value>$PN $MAC -- Requesting upgrade $SCHEME://$SERVIP:$PORT$PATH</value>
+    </setting>
+    <setting name="Log_Upgrade_Success_Msg" advanced="yes">
+      <label>Log Upgrade Success Msg</label>
+      <profileName>Provisioning/Firmware_Upgrade</profileName>
+      <value>$PN $MAC -- Successful upgrade $SCHEME://$SERVIP:$PORT$PATH -- $ERR</value>
+    </setting>
+    <setting name="Log_Upgrade_Failure_Msg" advanced="yes">
+      <label>Log Upgrade Failure Msg</label>
+      <profileName>Provisioning/Firmware_Upgrade</profileName>
+      <value>$PN $MAC -- Upgrade failed: $ERR</value>
+    </setting>
+    <setting name="Peer_Firmware_Sharing">
+      <label>Peer Firmware Sharing</label>
+      <profileName>Provisioning/Firmware_Upgrade</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="Peer_Firmware_Sharing_Log_Server">
+      <label>Peer Firmware Sharing Log Server</label>
+      <profileName>Provisioning/Firmware_Upgrade</profileName>
+      <value />
+    </setting>
+    <setting name="Custom_CA_Rule">
+      <label>Custom CA Rule</label>
+      <profileName>Provisioning/Custom_CA</profileName>
+      <value></value>
+    </setting>
+    <setting name="License_Keys" advanced="yes">
+      <label>License Keys</label>
+      <profileName>Provisioning/Firmware_Upgrade</profileName>
+      <value />
+    </setting>
+    <setting name="GPP_A" advanced="yes">
+      <label>GPP A</label>
+      <profileName>Provisioning/General_Purpose_Parameters</profileName>
+      <value />
+    </setting>
+    <setting name="GPP_B" advanced="yes">
+      <label>GPP B</label>
+      <profileName>Provisioning/General_Purpose_Parameters</profileName>
+      <value />
+    </setting>
+    <setting name="GPP_C" advanced="yes">
+      <label>GPP C</label>
+      <profileName>Provisioning/General_Purpose_Parameters</profileName>
+      <value />
+    </setting>
+    <setting name="GPP_D" advanced="yes">
+      <label>GPP D</label>
+      <profileName>Provisioning/General_Purpose_Parameters</profileName>
+      <value />
+    </setting>
+    <setting name="GPP_E" advanced="yes">
+      <label>GPP E</label>
+      <profileName>Provisioning/General_Purpose_Parameters</profileName>
+      <value />
+    </setting>
+    <setting name="GPP_F" advanced="yes">
+      <label>GPP F</label>
+      <profileName>Provisioning/General_Purpose_Parameters</profileName>
+      <value />
+    </setting>
+    <setting name="GPP_G" advanced="yes">
+      <label>GPP G</label>
+      <profileName>Provisioning/General_Purpose_Parameters</profileName>
+      <value />
+    </setting>
+    <setting name="GPP_H" advanced="yes">
+      <label>GPP H</label>
+      <profileName>Provisioning/General_Purpose_Parameters</profileName>
+      <value />
+    </setting>
+    <setting name="GPP_I" advanced="yes">
+      <label>GPP I</label>
+      <profileName>Provisioning/General_Purpose_Parameters</profileName>
+      <value />
+    </setting>
+    <setting name="GPP_J" advanced="yes">
+      <label>GPP J</label>
+      <profileName>Provisioning/General_Purpose_Parameters</profileName>
+      <value />
+    </setting>
+    <setting name="GPP_K" advanced="yes">
+      <label>GPP K</label>
+      <profileName>Provisioning/General_Purpose_Parameters</profileName>
+      <value />
+    </setting>
+    <setting name="GPP_L" advanced="yes">
+      <label>GPP L</label>
+      <profileName>Provisioning/General_Purpose_Parameters</profileName>
+      <value />
+    </setting>
+    <setting name="GPP_M" advanced="yes">
+      <label>GPP M</label>
+      <profileName>Provisioning/General_Purpose_Parameters</profileName>
+      <value />
+    </setting>
+    <setting name="GPP_N" advanced="yes">
+      <label>GPP N</label>
+      <profileName>Provisioning/General_Purpose_Parameters</profileName>
+      <value />
+    </setting>
+    <setting name="GPP_O" advanced="yes">
+      <label>GPP O</label>
+      <profileName>Provisioning/General_Purpose_Parameters</profileName>
+      <value />
+    </setting>
+    <setting name="GPP_P" advanced="yes">
+      <label>GPP P</label>
+      <profileName>Provisioning/General_Purpose_Parameters</profileName>
+      <value />
+    </setting>
+  </group>
+
+  <group name="Regional">
+    <setting name="Reorder_Delay">
+      <label>Reorder Delay</label>
+      <profileName>Regional/Control_Timer_Values__sec_</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>5</value>
+    </setting>
+    <setting name="Call_Back_Expires">
+      <label>Call Back Expires</label>
+      <profileName>Regional/Control_Timer_Values__sec_</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>1800</value>
+    </setting>
+
+    <setting name="Call_Return_Code">
+      <label>Call Return Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="Blind_Transfer_Code">
+      <label>Blind Transfer Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="Call_Back_Act_Code">
+      <label>Call Back Act Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="Call_Back_Deact_Code">
+      <label>Call Back Deact Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="Cfwd_All_Act_Code">
+      <label>Cfwd All Act Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="Cfwd_All_Deact_Code">
+      <label>Cfwd All Deact Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="Cfwd_Busy_Act_Code">
+      <label>Cfwd Busy Act Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="Cfwd_Busy_Deact_Code">
+      <label>Cfwd Busy Deact Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="Cfwd_No_Ans_Act_Code">
+      <label>Cfwd No Ans Act Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="Cfwd_No_Ans_Deact_Code">
+      <label>Cfwd No Ans Deact Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="CW_Act_Code">
+      <label>CW Act Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="CW_Deact_Code">
+      <label>CW Deact Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="CW_Per_Call_Act_Code">
+      <label>CW Per Call Act Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="CW_Per_Call_Deact_Code">
+      <label>CW Per Call Deact Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="Block_CID_Act_Code">
+      <label>Block CID Act Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="Block_CID_Deact_Code">
+      <label>Block CID Deact Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="Block_CID_Per_Call_Act_Code">
+      <label>Block CID Per Call Act Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="Block_CID_Per_Call_Deact_Code">
+      <label>Block CID Per Call Deact Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="Block_ANC_Act_Code">
+      <label>Block ANC Act Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="Block_ANC_Deact_Code">
+      <label>Block ANC Deact Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="DND_Act_Code">
+      <label>DND Act Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="DND_Deact_Code">
+      <label>DND Deact Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="Secure_All_Call_Act_Code">
+      <label>Secure All Call Act Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="Secure_No_Call_Act_Code">
+      <label>Secure No Call Act Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="Secure_One_Call_Act_Code">
+      <label>Secure One Call Act Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="Secure_One_Call_Deact_Code">
+      <label>Secure One Call Deact Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value>*19</value>
+    </setting>
+    <setting name="Paging_Code">
+      <label>Paging Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="Call_Park_Code">
+      <label>Call Park Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="Call_Pickup_Code">
+      <label>Call Pickup Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="Call_UnPark_Code">
+      <label>Call UnPark Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="Group_Call_Pickup_Code">
+      <label>Group Call Pickup Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="Media_Loopback_Code">
+      <label>Media Loopback Code</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value></value>
+    </setting>
+    <setting name="Referral_Services_Codes">
+      <label>Referral Services Codes</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value />
+    </setting>
+    <setting name="Feature_Dial_Services_Codes">
+      <label>Feature Dial Services Codes</label>
+      <profileName>Regional/Vertical_Service_Activation_Codes</profileName>
+      <value />
+    </setting>
+
+    <setting name="Ignore_DHCP_Time_Offset">
+      <label> Ignore DHCP Time Offset</label>
+      <profileName>Regional/Miscellaneous</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="Set_Local_Date_mm_dd_">
+      <label>Set Local Date mm dd</label>
+      <profileName>Regional/Miscellaneous</profileName>
+      <value />
+    </setting>
+    <setting name="Set_Local_Time_HH_mm_">
+      <label>Set Local Time HH mm</label>
+      <profileName>Regional/Miscellaneous</profileName>
+      <value />
+    </setting>
+    <setting name="Time_Zone">
+      <label>Time Zone</label>
+      <profileName>Regional/Miscellaneous</profileName>
+      <value>GMT</value>
+    </setting>
+    <setting name="Time_Offset__HH_mm_">
+      <label>Time Offset HH mm</label>
+      <profileName>Regional/Miscellaneous</profileName>
+      <value />
+    </setting>
+    <setting name="Daylight_Saving_Time_Enable">
+      <label>Daylight Savings Time</label>
+      <profileName>Regional/Miscellaneous</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>Enabled</value>
+          </option>
+          <option>
+            <value>Disabled</value>
+          </option>
+        </enum>
+      </type>
+      <value>Enabled</value>
+    </setting>
+    <setting name="Daylight_Saving_Time_Rule">
+      <label>Daylight Savings Time Rule</label>
+      <profileName>Regional/Miscellaneous</profileName>
+      <value />
+    </setting>
+  </group>
+
+  <group name="Phone">
+    <setting name="Station_Name">
+      <label>Station Name</label>
+      <profileName>phone/General</profileName>
+      <value />
+    </setting>
+    <setting name="Voice_Mail_Number">
+      <label>Voice Mail Number</label>
+      <profileName>phone/General</profileName>
+      <value />
+    </setting>
+    <setting name="Boot_Display">
+      <label>Boot Display</label>
+      <profileName>phone/General</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>Default</value>
+          </option>
+          <option>
+            <value>Download Picture</value>
+          </option>
+          <option>
+            <value>Logo</value>
+          </option>
+          <option>
+            <value>Text</value>
+          </option>
+        </enum>
+      </type>
+      <value>Default</value>
+    </setting>
+    <setting name="Phone_Background">
+      <label>Phone Background</label>
+      <profileName>phone/General</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>Default</value>
+          </option>
+          <option>
+            <value>Download Picture</value>
+          </option>
+          <option>
+            <value>Logo</value>
+          </option>
+        </enum>
+      </type>
+      <value>Download Picture</value>
+    </setting>
+    <setting name="Text_Display">
+      <label>Text Display</label>
+      <profileName>phone/General</profileName>
+      <value />
+    </setting>
+    <setting name="Picture_Download_URL">
+      <label>Picture Download URL</label>
+      <profileName>phone/General</profileName>
+      <value />
+    </setting>
+    <setting name="Logo_URL">
+      <label>Logo URL</label>
+      <profileName>phone/General</profileName>
+      <value />
+    </setting>
+
+    <setting name="Programmable_Softkey_Enable">
+      <label>Enable Programmable Soft Keys</label>
+      <profileName>phone/General</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Idle_Key_List">
+      <label>Idle Key list</label>
+      <profileName>phone/General</profileName>
+      <value>redial;recents;dnd;lcr;</value>
+    </setting>
+    <setting name="Missed_Call_Key_List">
+      <label>Missed Call Key list</label>
+      <profileName>phone/General</profileName>
+      <value>lcr|1;miss|4;</value>
+    </setting>
+    <setting name="Off_Hook_Key_List">
+      <label>Off Hook Key list</label>
+      <profileName>phone/General</profileName>
+      <value>redial;cancel;dir;dnd;</value>
+    </setting>
+    <setting name="Dialing_Input_Key_List">
+      <label>Dialing Input Key list</label>
+      <profileName>phone/General</profileName>
+      <value>option|1;call|2;delchar|3;cancel|4;</value>
+    </setting>
+    <setting name="Progressing_Key_List">
+      <label>Progressing Key List</label>
+      <profileName>phone/General</profileName>
+      <value>endcall|2;</value>
+    </setting>
+    <setting name="Connected_Key_List">
+      <label>Connected Key List</label>
+      <profileName>phone/General</profileName>
+      <value>hold|1;endcall|2;conf|3;xfer|4;showvideo;bxfer;confLx;xferLx;park;phold;crdstart;crdpause;crdresume;crdstop;dnd;</value>
+    </setting>
+    <setting name="Start-Xfer_Key_List">
+      <label>Start-Xfer Key List</label>
+      <profileName>phone/General</profileName>
+      <value>hold|1;endcall|2;xfer|3;dnd;</value>
+    </setting>
+    <setting name="Start-Conf_Key_List">
+      <label>Start-Conf Key List</label>
+      <profileName>phone/General</profileName>
+      <value>hold|1;endcall|2;conf|3;dnd;</value>
+    </setting>
+    <setting name="Conferencing_Key_List">
+      <label>Conferencing Key List</label>
+      <profileName>phone/General</profileName>
+      <value>hold|1;endcall|2;join|4;phold;crdstart|5;crdpause|5;crdresume|5;crdstop|6;dnd;</value>
+    </setting>
+    <setting name="Releasing_Key_List">
+      <label>Releasing Key List</label>
+      <profileName>phone/General</profileName>
+      <value>endcall|2;</value>
+    </setting>
+    <setting name="Hold_Key_List">
+      <label>Hold Key List</label>
+      <profileName>phone/General</profileName>
+      <value>resume|1;endcall|2;newcall|3;redial;dir;cfwd;dnd;callpush;</value>
+    </setting>
+    <setting name="Ringing_Key_List">
+      <label>Ringing Key List</label>
+      <profileName>phone/General</profileName>
+      <value>answer|1;ignore|2;ignoresilent|3;</value>
+    </setting>
+    <setting name="Shared_Active_Key_List">
+      <label>Shared Line Active Key List</label>
+      <profileName>phone/General</profileName>
+      <value>newcall|1;barge|2;bargesilent|3;cfwd|4;dnd|5;callretrieve;bridgein;</value>
+    </setting>
+    <setting name="Shared_Held_Key_List">
+      <label>Shared Line Held Key List</label>
+      <profileName>phone/General</profileName>
+      <value>resume|1;barge|2;cfwd|3;dnd|4;</value>
+    </setting>
+    <setting name="Connected_Video_Key_List">
+      <label>Connected Video Key List</label>
+      <profileName>phone/General</profileName>
+      <value>hold|1;endcall|2;calllist|3;pip|4;swap|5;</value>
+    </setting>
+    <setting name="Exec_Assistant_Key_List">
+      <label>Exec Assistant Key List</label>
+      <profileName>phone/General</profileName>
+      <value>proxycall|2;divert|3;</value>
+    </setting>
+
+    <setting name="SCA_Line_ID_Mapping" advanced="yes">
+      <label>SCA Line ID Mapping</label>
+      <profileName>phone/Miscellaneous_Line_Key_Setings</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>Vertical First</value>
+          </option>
+          <option>
+            <value>Horizontal First</value>
+          </option>
+        </enum>
+      </type>
+    </setting>
+
+    <setting name="Idle_LED" advanced="yes">
+      <label>Idle LED</label>
+      <profileName>Phone/Line_Key_LED_Pattern</profileName>
+      <value />
+    </setting>
+    <setting name="Remote_Undefined_LED" advanced="yes">
+      <label>Remote Undefined LED</label>
+      <profileName>Phone/Line_Key_LED_Pattern</profileName>
+      <value />
+    </setting>
+    <setting name="Local_Seized_LED" advanced="yes">
+      <label>Local Seized LED</label>
+      <profileName>Phone/Line_Key_LED_Pattern</profileName>
+      <value />
+    </setting>
+    <setting name="Remote_Seized_LED" advanced="yes">
+      <label>Remote Seized LED</label>
+      <profileName>Phone/Line_Key_LED_Pattern</profileName>
+      <value />
+    </setting>
+    <setting name="Local_Progressing_LED" advanced="yes">
+      <label>Local Progressing LED</label>
+      <profileName>Phone/Line_Key_LED_Pattern</profileName>
+      <value />
+    </setting>
+    <setting name="Remote_Progressing_LED" advanced="yes">
+      <label>Remote Progressing LED</label>
+      <profileName>Phone/Line_Key_LED_Pattern</profileName>
+      <value />
+    </setting>
+    <setting name="Local_Ringing_LED" advanced="yes">
+      <label>Local Ringing LED</label>
+      <profileName>Phone/Line_Key_LED_Pattern</profileName>
+      <value />
+    </setting>
+    <setting name="Remote_Ringing_LED" advanced="yes">
+      <label>Remote Ringing LED</label>
+      <profileName>Phone/Line_Key_LED_Pattern</profileName>
+      <value />
+    </setting>
+    <setting name="Local_Active_LED" advanced="yes">
+      <label>Local Active LED</label>
+      <profileName>Phone/Line_Key_LED_Pattern</profileName>
+      <value />
+    </setting>
+    <setting name="Remote_Active_LED" advanced="yes">
+      <label>Remote Active LED</label>
+      <profileName>Phone/Line_Key_LED_Pattern</profileName>
+      <value />
+    </setting>
+    <setting name="Local_Held_LED" advanced="yes">
+      <label>Local Held LED</label>
+      <profileName>Phone/Line_Key_LED_Pattern</profileName>
+      <value />
+    </setting>
+    <setting name="Remote_Held_LED" advanced="yes">
+      <label>Remote Held LED</label>
+      <profileName>Phone/Line_Key_LED_Pattern</profileName>
+      <value />
+    </setting>
+    <setting name="Register_Failed_LED" advanced="yes">
+      <label>Register Failed LED</label>
+      <profileName>Phone/Line_Key_LED_Pattern</profileName>
+      <value />
+    </setting>
+    <setting name="Disabled_LED" advanced="yes">
+      <label>Disabled LED</label>
+      <profileName>Phone/Line_Key_LED_Pattern</profileName>
+      <value />
+    </setting>
+    <setting name="Registering_LED" advanced="yes">
+      <label>Registering LED</label>
+      <profileName>Phone/Line_Key_LED_Pattern</profileName>
+      <value />
+    </setting>
+    <setting name="Call_Back_Active_LED" advanced="yes">
+      <label>Call Back Active LED</label>
+      <profileName>Phone/Line_Key_LED_Pattern</profileName>
+      <value />
+    </setting>
+    <setting name="Trunk_In-use_LED" advanced="yes">
+      <label>Trunk In-use LED</label>
+      <profileName>Phone/Line_Key_LED_Pattern</profileName>
+      <value />
+    </setting>
+    <setting name="Trunk_No_Service_LED" advanced="yes">
+      <label>Trunk No Service LED</label>
+      <profileName>Phone/Line_Key_LED_Pattern</profileName>
+      <value />
+    </setting><setting name="Trunk_Reserved_LED" advanced="yes">
+      <label>Trunk Reserved LED</label>
+      <profileName>Phone/Line_Key_LED_Pattern</profileName>
+      <value />
+    </setting>
+
+
+    <setting name="Conference_Serv" advanced="yes">
+      <label>Conference Serv</label>
+      <profileName>Phone/Supplementary_Services</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Attn_Transfer_Serv" advanced="yes">
+      <label>Attn Transfer Serv</label>
+      <profileName>Phone/Supplementary_Services</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Blind_Transfer_Serv" advanced="yes">
+      <label>Blind Transfer Serv</label>
+      <profileName>Phone/Supplementary_Services</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="DND_Serv" advanced="yes">
+      <label>DND Serv</label>
+      <profileName>Phone/Supplementary_Services</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Block_ANC_Serv" advanced="yes">
+      <label>Block ANC Serv</label>
+      <profileName>Phone/Supplementary_Services</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Call_Back_Serv" advanced="yes">
+      <label>Call Back Serv</label>
+      <profileName>Phone/Supplementary_Services</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Block_CID_Serv" advanced="yes">
+      <label>Block CID Serv</label>
+      <profileName>Phone/Supplementary_Services</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Secure_Call_Serv" advanced="yes">
+      <label>Secure Call Serv</label>
+      <profileName>Phone/Supplementary_Services</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Cfwd_All_Serv" advanced="yes">
+      <label>Cfwd All Serv</label>
+      <profileName>Phone/Supplementary_Services</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Cfwd_Busy_Serv" advanced="yes">
+      <label>Cfwd Busy Serv</label>
+      <profileName>Phone/Supplementary_Services</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Cfwd_No_Ans_Serv" advanced="yes">
+      <label>Cfwd No Ans Serv</label>
+      <profileName>Phone/Supplementary_Services</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Paging_Serv" advanced="yes">
+      <label>Paging Serv</label>
+      <profileName>Phone/Supplementary_Services</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Call_Park_Serv" advanced="yes">
+      <label>Call Park Serv</label>
+      <profileName>Phone/Supplementary_Services</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Call_Pick_Up_Serv" advanced="yes">
+      <label>Call Pick Up Serv</label>
+      <profileName>Phone/Supplementary_Services</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="ACD_Login_Serv" advanced="yes">
+      <label>ACD Login Serv</label>
+      <profileName>Phone/Supplementary_Services</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="Group_Call_Pick_Up_Serv" advanced="yes">
+      <label>Group Call Pick Up Serv</label>
+      <profileName>Phone/Supplementary_Services</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="ACD_Ext">
+      <label>ACD Ext</label>
+      <profileName>phone/Supplementary_Services</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>1</value>
+          </option>
+          <option>
+            <value>2</value>
+          </option>
+        </enum>
+      </type>
+    </setting>
+
+    <setting name="Ring1">
+      <label>Ring1</label>
+      <profileName>Phone/Ring_Tone</profileName>
+      <value>n=Classic-1;w=3;c=1</value>
+    </setting>
+    <setting name="Ring2">
+      <label>Ring2</label>
+      <profileName>Phone/Ring_Tone</profileName>
+      <value>n=Classic-2;w=3;c=2</value>
+    </setting>
+    <setting name="Ring3">
+      <label>Ring3</label>
+      <profileName>Phone/Ring_Tone</profileName>
+      <value>n=Classic-3;w=3;c=3</value>
+    </setting>
+    <setting name="Ring4">
+      <label>Ring4</label>
+      <profileName>Phone/Ring_Tone</profileName>
+      <value>n=Classic-4;w=3;c=4</value>
+    </setting>
+    <setting name="Ring5">
+      <label>Ring5</label>
+      <profileName>Phone/Ring_Tone</profileName>
+      <value>n=Simple-1;w=2;c=1</value>
+    </setting>
+    <setting name="Ring6">
+      <label>Ring6</label>
+      <profileName>Phone/Ring_Tone</profileName>
+      <value>n=Simple-2;w=2;c=2</value>
+    </setting>
+    <setting name="Ring7">
+      <label>Ring7</label>
+      <profileName>Phone/Ring_Tone</profileName>
+      <value>n=Simple-3;w=2;c=3</value>
+    </setting>
+    <setting name="Ring8">
+      <label>Ring8</label>
+      <profileName>Phone/Ring_Tone</profileName>
+      <value>n=Simple-4;w=2;c=4</value>
+    </setting>
+    <setting name="Ring9">
+      <label>Ring9</label>
+      <profileName>Phone/Ring_Tone</profileName>
+      <value>n=Simple-5;w=2;c=5</value>
+    </setting>
+    <setting name="Ring10">
+      <label>Ring10</label>
+      <profileName>Phone/Ring_Tone</profileName>
+      <value>n=Office;w=4;c=1</value>
+    </setting>
+
+    <setting name="PSK_1">
+      <label>Programmable Soft Key 1</label>
+      <profileName>Phone/Programmable_Soft_Keys</profileName>
+    </setting>
+    <setting name="PSK_2">
+      <label>Programmable Soft Key 2</label>
+      <profileName>Phone/Programmable_Soft_Keys</profileName>
+    </setting>
+    <setting name="PSK_3">
+      <label>Programmable Soft Key 3</label>
+      <profileName>Phone/Programmable_Soft_Keys</profileName>
+    </setting>
+    <setting name="PSK_4">
+      <label>Programmable Soft Key 4</label>
+      <profileName>Phone/Programmable_Soft_Keys</profileName>
+    </setting>
+    <setting name="PSK_5">
+      <label>Programmable Soft Key 6</label>
+      <profileName>Phone/Programmable_Soft_Keys</profileName>
+    </setting>
+    <setting name="PSK_6">
+      <label>Programmable Soft Key 6</label>
+      <profileName>Phone/Programmable_Soft_Keys</profileName>
+    </setting>
+    <setting name="PSK_7">
+      <label>Programmable Soft Key 7</label>
+      <profileName>Phone/Programmable_Soft_Keys</profileName>
+    </setting>
+    <setting name="PSK_8">
+      <label>Programmable Soft Key 8</label>
+      <profileName>Phone/Programmable_Soft_Keys</profileName>
+    </setting>
+    <setting name="PSK_9">
+      <label>Programmable Soft Key 9</label>
+      <profileName>Phone/Programmable_Soft_Keys</profileName>
+    </setting>
+    <setting name="PSK_10">
+      <label>Programmable Soft Key 10</label>
+      <profileName>Phone/Programmable_Soft_Keys</profileName>
+    </setting>
+    <setting name="PSK_11">
+      <label>Programmable Soft Key 11</label>
+      <profileName>Phone/Programmable_Soft_Keys</profileName>
+    </setting>
+    <setting name="PSK_12">
+      <label>Programmable Soft Key 12</label>
+      <profileName>Phone/Programmable_Soft_Keys</profileName>
+    </setting>
+    <setting name="PSK_13">
+      <label>Programmable Soft Key 13</label>
+      <profileName>Phone/Programmable_Soft_Keys</profileName>
+    </setting>
+    <setting name="PSK_14">
+      <label>Programmable Soft Key 14</label>
+      <profileName>Phone/Programmable_Soft_Keys</profileName>
+    </setting>
+    <setting name="PSK_15">
+      <label>Programmable Soft Key 15</label>
+      <profileName>Phone/Programmable_Soft_Keys</profileName>
+    </setting>
+    <setting name="PSK_16">
+      <label>Programmable Soft Key 16</label>
+      <profileName>Phone/Programmable_Soft_Keys</profileName>
+    </setting>
+
+    <setting name="Handset_Input_Gain">
+      <label>Handset Input Gain</label>
+      <profileName>Phone/Audio_Input_Gain__dB_</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>-6</value>
+          </option>
+          <option>
+            <value>0</value>
+          </option>
+          <option>
+            <value>6</value>
+          </option>
+        </enum>
+      </type>
+      <value>0</value>
+    </setting>
+    <setting name="Headset_Input_Gain">
+      <label>Headset Input Gain</label>
+      <profileName>Phone/Audio_Input_Gain__dB_</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>-6</value>
+          </option>
+          <option>
+            <value>0</value>
+          </option>
+          <option>
+            <value>6</value>
+          </option>
+        </enum>
+      </type>
+      <value>0</value>
+    </setting>
+    <setting name="Speakerphone_Input_Gain">
+      <label>Speakerphone Input Gain</label>
+      <profileName>Phone/Audio_Input_Gain__dB_</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>-6</value>
+          </option>
+          <option>
+            <value>0</value>
+          </option>
+          <option>
+            <value>6</value>
+          </option>
+        </enum>
+      </type>
+      <value>0</value>
+    </setting>
+    <setting name="Group_Paging_Script">
+      <label>Group Paging Script</label>
+      <profileName>Phone/Multiple_Paging_Group_Parameters</profileName>
+      <value>pggrp=224.168.168.168:34560;name=All;num=800;listen=yes;</value>
+    </setting>
+    <setting name="XML_Directory_Service_Name">
+      <label>XML Directory Service Name</label>
+      <profileName>Phone/XML_Service</profileName>
+      <value/>
+    </setting>
+    <setting name="XML_Directory_Service_URL">
+      <label>XML Directory Service URL</label>
+      <profileName>Phone/XML_Service</profileName>
+      <value/>
+    </setting>
+    <setting name="XML_Application_Service_Name">
+      <label>XML Application Service Name</label>
+      <profileName>Phone/XML_Service</profileName>
+      <value/>
+    </setting>
+    <setting name="XML_Application_Service_URL">
+      <label>XML Application Service URL</label>
+      <profileName>Phone/XML_Service</profileName>
+      <value/>
+    </setting>
+    <setting name="CISCO_XML_EXE_Enable">
+      <label>Enable Cisco XML API</label>
+      <profileName>Phone/XML_Service</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="CISCO_XML_EXE_Auth_Mode">
+      <label>Cisco XML API Authentication Mode</label>
+      <profileName>Phone/XML_Service</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>Remote Credential</value>
+          </option>
+          <option>
+            <value>Local Credential</value>
+          </option>
+        </enum>
+      </type>
+      <value>Remote Credential</value>
+    </setting>
+    <setting name="XML_User_Name">
+      <label>XML API User Name</label>
+      <profileName>Phone/XML_Service</profileName>
+      <value />
+    </setting>
+    <setting name="XML_Password">
+      <label>XML API Password</label>
+      <profileName>Phone/XML_Service</profileName>
+      <value />
+    </setting>
+  </group>
+
+  <group name="User">
+    <setting name="Cfwd_All_Dest">
+      <label>Cfwd All Dest</label>
+      <profileName>User/Call_Forward</profileName>
+      <value />
+    </setting>
+    <setting name="Cfwd_Busy_Dest">
+      <label>Cfwd Busy Dest</label>
+      <profileName>User/Call_Foward</profileName>
+      <value>vm</value>
+    </setting>
+    <setting name="Cfwd_No_Ans_Dest">
+      <label>Cfwd No Ans Dest</label>
+      <profileName>User/Call_Forward</profileName>
+      <value>vm</value>
+    </setting>
+    <setting name="Cfwd_No_Ans_Delay">
+      <label>Cfwd No Ans Delay</label>
+      <profileName>User/Call_Forward</profileName>
+      <value>20</value>
+    </setting>
+    <setting name="Speed_Dial_2_Name">
+      <label>Speed Dial 2 Name</label>
+      <profileName>User/Call_Forward</profileName>
+      <value />
+    </setting>
+    <setting name="Speed_Dial_2_Number">
+      <label>Speed Dial 2 Number</label>
+      <profileName>User/Call_Forward</profileName>
+      <value />
+    </setting>
+    <setting name="Speed_Dial_3_Name">
+      <label>Speed Dial 3 Name</label>
+      <profileName>User/Call_Forward</profileName>
+      <value />
+    </setting>
+    <setting name="Speed_Dial_3_Number">
+      <label>Speed Dial 3 Number</label>
+      <profileName>User/Call_Forward</profileName>
+      <value />
+    </setting>
+    <setting name="Speed_Dial_4_Name">
+      <label>Speed Dial 4 Name</label>
+      <profileName>User/Call_Forward</profileName>
+      <value />
+    </setting>
+    <setting name="Speed_Dial_4_Number">
+      <label>Speed Dial 4 Number</label>
+      <profileName>User/Call_Forward</profileName>
+      <value />
+    </setting>
+    <setting name="Speed_Dial_5_Name">
+      <label>Speed Dial 5 Name</label>
+      <profileName>User/Call_Forward</profileName>
+      <value />
+    </setting>
+    <setting name="Speed_Dial_5_Number">
+      <label>Speed Dial 5 Number</label>
+      <profileName>User/Call_Forward</profileName>
+      <value />
+    </setting>
+    <setting name="Speed_Dial_6_Name">
+      <label>Speed Dial 6 Name</label>
+      <profileName>User/Call_Forward</profileName>
+      <value />
+    </setting>
+    <setting name="Speed_Dial_6_Number">
+      <label>Speed Dial 6 Number</label>
+      <profileName>User/Call_Forward</profileName>
+      <value />
+    </setting>
+    <setting name="Speed_Dial_7_Name">
+      <label>Speed Dial 7 Name</label>
+      <profileName>User/Call_Forward</profileName>
+      <value />
+    </setting>
+    <setting name="Speed_Dial_7_Number">
+      <label>Speed Dial 7 Number</label>
+      <profileName>User/Call_Forward</profileName>
+      <value />
+    </setting>
+    <setting name="Speed_Dial_8_Name">
+      <label>Speed Dial 8 Name</label>
+      <profileName>User/Call_Forward</profileName>
+      <value />
+    </setting>
+    <setting name="Speed_Dial_8_Number">
+      <label>Speed Dial 8 Number</label>
+      <profileName>User/Call_Forward</profileName>
+      <value />
+    </setting>
+    <setting name="Speed_Dial_9_Name">
+      <label>Speed Dial 9 Name</label>
+      <profileName>User/Call_Forward</profileName>
+      <value />
+    </setting>
+    <setting name="Speed_Dial_9_Number">
+      <label>Speed Dial 9 Number</label>
+      <profileName>User/Call_Forward</profileName>
+      <value />
+    </setting>
+    <setting name="CW_Setting">
+      <label>CW Setting</label>
+      <profileName>User/Supplementary_Services</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Block_CID_Setting">
+      <label>Block CID Setting</label>
+      <profileName>User/Supplementary_Services</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="Block_ANC_Setting">
+      <label>Block ANC Setting</label>
+      <profileName>User/Supplementary_Services</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="DND_Setting">
+      <label>DND Setting</label>
+      <profileName>User/Supplementary_Services</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="Secure_Call_Setting">
+      <label>Secure Call Setting</label>
+      <profileName>User/Supplementary_Services</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="Cfwd_Setting">
+      <label>Call Forwarding Setting</label>
+      <profileName>User/Supplementary_Services</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="Dial_Assistance">
+      <label>Dial Assistance</label>
+      <profileName>User/Supplementary_Services</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="Auto_Answer_Page">
+      <label>Auto Answer Page</label>
+      <profileName>User/Supplementary_Services</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Preferred_Audio_Device">
+      <label>Preferred Audio Device</label>
+      <profileName>User/Supplementary_Services</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>Speaker</value>
+          </option>
+          <option>
+            <value>Headset</value>
+          </option>
+        </enum>
+      </type>
+      <value>Speaker</value>
+    </setting>
+    <setting name="Time_Format">
+      <label>Time Format</label>
+      <profileName>User/Supplementary_Services</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>12hr</value>
+          </option>
+          <option>
+            <value>24hr</value>
+          </option>
+        </enum>
+      </type>
+      <value>12hr</value>
+    </setting>
+    <setting name="Date_Format">
+      <label>Date Format</label>
+      <profileName>User/Supplementary_Services</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>month/day</value>
+          </option>
+          <option>
+            <value>day/month</value>
+          </option>
+        </enum>
+      </type>
+      <value>month/day</value>
+    </setting>
+    <setting name="Accept_Media_Loopback_Request">
+      <label>Accept Media Loopback Request</label>
+      <profileName>User/Supplementary_Services</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>automatic</value>
+          </option>
+          <option>
+            <value>never</value>
+          </option>
+          <option>
+            <value>manual</value>
+          </option>
+        </enum>
+      </type>
+    </setting>
+    <setting name="Ringer_Volume">
+      <label>Ringer Volume</label>
+      <profileName>User/Audio_Volume</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>0</value>
+    </setting>
+    <setting name="Speaker_Volume">
+      <label>Speaker Volume</label>
+      <profileName>User/Audio_Volume</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>5</value>
+    </setting>
+    <setting name="Handset_Volume">
+      <label>Handset Volume</label>
+      <profileName>User/Audio_Volume</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>13</value>
+    </setting>
+    <setting name="Headset_Volume">
+      <label>Headset Volume</label>
+      <profileName>User/Audio_Volume</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>10</value>
+    </setting>
+    <setting name="BlueTooth_Volume">
+      <label>BlueTooth Volume</label>
+      <profileName>User/Audio_Volume</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>9</value>
+    </setting>
+    <setting name="Ehook_Enable">
+      <label>Electronic HookSwitch Control</label>
+      <profileName>User/Audio_Volume</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="LCD_Contrast">
+      <label>LCD Contrast</label>
+      <profileName>User/Audio_Volume</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>8</value>
+    </setting>
+    <setting name="Back_Light_Timer">
+      <label>Back Light Timer</label>
+      <profileName>User/Audio_Volume</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>10 s</value>
+          </option>
+          <option>
+            <value>no</value>
+          </option>
+          <option>
+            <value>20 s</value>
+          </option>
+          <option>
+            <value>Always On</value>
+          </option>
+        </enum>
+      </type>
+      <value>10 s</value>
+    </setting>
+    <setting name="Screen_Saver_Enable">
+      <label>Screen Saver</label>
+      <profileName>User/Audio_Volume</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Screen_Saver_Type">
+      <label>Screen Saver Type</label>
+      <profileName>User/Audio_Volume</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>Clock</value>
+          </option>
+          <option>
+            <value>Download Picture</value>
+          </option>
+          <option>
+            <value>Logo</value>
+          </option>
+          <option>
+            <value>Lock</value>
+          </option>
+        </enum>
+      </type>
+      <value>Clock</value>
+    </setting>
+    <setting name="Screen_Saver_Wait">
+      <label>Screen Saver Wait</label>
+      <profileName>User/Audio_Volume</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>600</value>
+    </setting>
+  </group>
+
+  <group name="Attendant">
+    <setting name="Subscribe_Expires">
+      <label>Subscribe Expires</label>
+      <profileName>Attendant/BLF</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>3600</value>
+    </setting>
+    <setting name="Subscribe_Retry_Interval">
+      <label>Subscribe Retry Interval</label>
+      <profileName>Attendant/BLF</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>30</value>
+    </setting>
+    <setting name="Number_of_Units">
+      <label>Number of Units</label>
+      <profileName>Attendant/BLF</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>1</value>
+    </setting>
+
+    <setting name="Subscribe_Delay">
+      <label>Subscribe Delay</label>
+      <profileName>Attendant/BLF</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>1</value>
+    </setting>
+    <setting name="Server_Type">
+      <label>Server Type</label>
+      <profileName>Attendant/BLF</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>Broadsoft</value>
+          </option>
+          <option>
+            <value>SPA9000</value>
+          </option>
+          <option>
+            <value>Asterisk</value>
+          </option>
+          <option>
+            <value>RFC3265_4235</value>
+          </option>
+          <option>
+            <value>Sylantro</value>
+          </option>
+        </enum>
+      </type>
+      <value>Broadsoft</value>
+    </setting>
+    <setting name="KEM_Type">
+      <label>KEM Type</label>
+      <profileName>Attendant/BLF</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>CP-8800-Audio</value>
+          </option>
+          <option>
+            <value>CP-8800-Video</value>
+          </option>
+          <option>
+            <value>BEKEM</value>
+          </option>
+        </enum>
+      </type>
+      <value>CP-8800-Audio</value>
+    </setting>
+    <setting name="BLF_List_URI">
+      <label>BLF URI</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Use_Line_Keys_For_BLF_List">
+      <label>Use line keys for BLF</label>
+      <profileName>Attendant/BLF</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="Customizable_PLK_Options">
+      <label>Customizable PLK Options</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="BLF_List">
+      <label>BLF List</label>
+      <profileName>Attendant/BLF</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>Show</value>
+          </option>
+          <option>
+            <value>Hide</value>
+          </option>
+        </enum>
+      </type>
+      <value>Show</value>
+    </setting>
+    <setting name="Call_Pickup_Audio_Notification">
+      <label>Call Pickup Audio Notification</label>
+      <profileName>Attendant/BLF</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="Attendant_Console_LCD_Brightness">
+      <label>Attendant Console LCD Brightness</label>
+      <profileName>Attendant/BLF</profileName>
+      <type>
+        <integer />
+      </type>
+      <value>12</value>
+    </setting>
+    <setting name="BXfer_To_Starcode_Enable">
+      <label>Blind Transfer to Starcode</label>
+      <profileName>Attendant/BLF</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="BXfer_On_Speed_Dial_Enable">
+      <label>Blind Transfer on Speed Dial</label>
+      <profileName>Attendant/BLF</profileName>
+      <type refid="yes-no" />
+      <value>yes</value>
+    </setting>
+    <setting name="BXfer_To_Remote_Party_Number_Enable">
+      <label>Blind Transfer to Remote Party</label>
+      <profileName>Attendant/BLF</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+    <setting name="BLF_Label_Display_Mode">
+      <label>BLF Label Display Mode</label>
+      <profileName>Attendant/BLF</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>Name</value>
+          </option>
+          <option>
+            <value>Ext</value>
+          </option>
+          <option>
+            <value>Both</value>
+          </option>
+        </enum>
+      </type>
+      <value>Name</value>
+    </setting>
+    <setting name="Wake_up_phone_screen_when_BLF_pickup_is_ringing">
+      <label>Wake up phone screen when BLF ringing</label>
+      <profileName>Attendant/BLF</profileName>
+      <type refid="yes-no" />
+      <value>no</value>
+    </setting>
+
+    <!--Unit Keys -->
+    !-- Unit 1 -->
+    <setting name="Unit_1_Key_1_">
+      <label>Unit 1 Key 1</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_1_Key_2_">
+      <label>Unit 1 Key 2</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_1_Key_3_">
+      <label>Unit 1 Key 3</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_1_Key_4_">
+      <label>Unit 1 Key 4</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_1_Key_5_">
+      <label>Unit 1 Key 5</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_1_Key_6_">
+      <label>Unit 1 Key 6</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_1_Key_7_">
+      <label>Unit 1 Key 7</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_1_Key_8_">
+      <label>Unit 1 Key 8</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_1_Key_9_">
+      <label>Unit 1 Key 9</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_1_Key_10_">
+      <label>Unit 1 Key 10</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_1_Key_11_">
+      <label>Unit 1 Key 11</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_1_Key_12_">
+      <label>Unit 1 Key 12</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_1_Key_13_">
+      <label>Unit 1 Key 13</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_1_Key_14_">
+      <label>Unit 1 Key 14</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_1_Key_15_">
+      <label>Unit 1 Key 15</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_1_Key_16_">
+      <label>Unit 1 Key 16</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_1_Key_17_">
+      <label>Unit 1 Key 17</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_1_Key_18_">
+      <label>Unit 1 Key 18</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_1_Key_19_">
+      <label>Unit 1 Key 19</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_1_Key_20_">
+      <label>Unit 1 Key 20</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_1_Key_21_">
+      <label>Unit 1 Key 21</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_1_Key_22_">
+      <label>Unit 1 Key 22</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_1_Key_23_">
+      <label>Unit 1 Key 23</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_1_Key_24_">
+      <label>Unit 1 Key 24</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_1_Key_25_">
+      <label>Unit 1 Key 25</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_1_Key_26_">
+      <label>Unit 1 Key 26</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_1_Key_27_">
+      <label>Unit 1 Key 27</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_1_Key_28_">
+      <label>Unit 1 Key 28</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    !-- Unit 2 -->
+    <setting name="Unit_2_Key_1_">
+      <label>Unit 2 Key 1</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_2_Key_2_">
+      <label>Unit 2 Key 2</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_2_Key_3_">
+      <label>Unit 2 Key 3</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_2_Key_4_">
+      <label>Unit 2 Key 4</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_2_Key_5_">
+      <label>Unit 2 Key 5</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_2_Key_6_">
+      <label>Unit 2 Key 6</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_2_Key_7_">
+      <label>Unit 2 Key 7</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_2_Key_8_">
+      <label>Unit 2 Key 8</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_2_Key_9_">
+      <label>Unit 2 Key 9</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_2_Key_10_">
+      <label>Unit 2 Key 10</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_2_Key_11_">
+      <label>Unit 2 Key 11</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_2_Key_12_">
+      <label>Unit 2 Key 12</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_2_Key_13_">
+      <label>Unit 2 Key 13</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_2_Key_14_">
+      <label>Unit 2 Key 14</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_2_Key_15_">
+      <label>Unit 2 Key 15</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_2_Key_16_">
+      <label>Unit 2 Key 16</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_2_Key_17_">
+      <label>Unit 2 Key 17</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_2_Key_18_">
+      <label>Unit 2 Key 18</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_2_Key_19_">
+      <label>Unit 2 Key 19</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_2_Key_20_">
+      <label>Unit 2 Key 20</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_2_Key_21_">
+      <label>Unit 2 Key 21</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_2_Key_22_">
+      <label>Unit 2 Key 22</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_2_Key_23_">
+      <label>Unit 2 Key 23</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_2_Key_24_">
+      <label>Unit 2 Key 24</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_2_Key_25_">
+      <label>Unit 2 Key 25</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_2_Key_26_">
+      <label>Unit 2 Key 26</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_2_Key_27_">
+      <label>Unit 2 Key 27</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_2_Key_28_">
+      <label>Unit 2 Key 28</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    !-- Unit 3 -->
+    <setting name="Unit_3_Key_1_">
+      <label>Unit 3 Key 1</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_3_Key_2_">
+      <label>Unit 3 Key 2</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_3_Key_3_">
+      <label>Unit 3 Key 3</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_3_Key_4_">
+      <label>Unit 3 Key 4</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_3_Key_5_">
+      <label>Unit 3 Key 5</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_3_Key_6_">
+      <label>Unit 3 Key 6</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_3_Key_7_">
+      <label>Unit 3 Key 7</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_3_Key_8_">
+      <label>Unit 3 Key 8</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_3_Key_9_">
+      <label>Unit 3 Key 9</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_3_Key_10_">
+      <label>Unit 3 Key 10</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_3_Key_11_">
+      <label>Unit 3 Key 11</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_3_Key_12_">
+      <label>Unit 3 Key 12</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_3_Key_13_">
+      <label>Unit 3 Key 13</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_3_Key_14_">
+      <label>Unit 3 Key 14</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_3_Key_15_">
+      <label>Unit 3 Key 15</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_3_Key_16_">
+      <label>Unit 3 Key 16</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_3_Key_17_">
+      <label>Unit 3 Key 17</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_3_Key_18_">
+      <label>Unit 3 Key 18</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_3_Key_19_">
+      <label>Unit 3 Key 19</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_3_Key_20_">
+      <label>Unit 3 Key 20</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_3_Key_21_">
+      <label>Unit 3 Key 21</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_3_Key_22_">
+      <label>Unit 3 Key 22</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_3_Key_23_">
+      <label>Unit 3 Key 23</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_3_Key_24_">
+      <label>Unit 3 Key 24</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_3_Key_25_">
+      <label>Unit 3 Key 25</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_3_Key_26_">
+      <label>Unit 3 Key 26</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_3_Key_27_">
+      <label>Unit 3 Key 27</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+    <setting name="Unit_3_Key_28_">
+      <label>Unit 3 Key 28</label>
+      <profileName>Attendant/BLF</profileName>
+      <value />
+    </setting>
+  </group>
+
+  <group name="e911"  hidden="yes">
+    <setting name="location">
+      <type>
+        <integer/>
+      </type>
+    </setting>
+  </group>
+</model>

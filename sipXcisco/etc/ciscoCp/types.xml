@@ -1,0 +1,39 @@
+<type id="yes-no">
+  <boolean>
+    <true>
+      <value>yes</value>
+    </true>
+    <false>
+      <value>no</value>
+    </false>
+  </boolean>
+</type>
+
+<type id="codec">
+  <enum>
+    <option>
+      <value>G722</value>
+    </option>
+    <option>
+      <value>G711u</value>
+    </option>
+    <option>
+      <value>G711a</value>
+    </option>
+    <option>
+      <value>G729a</value>
+    </option>
+    <option>
+      <value>G722.2</value>
+    </option>
+    <option>
+      <value>iLBC</value>
+    </option>
+    <option>
+      <value>iSAC</value>
+    </option>
+    <option>
+      <value>OPUS</value>
+    </option>
+  </enum>
+</type>

@@ -9,6 +9,9 @@ dist_plus_DATA = $(shell cd $(srcdir); find ciscoplus -type f)
 ipdir = $(SIPX_CONFDIR)/ciscoIp
 dist_ip_DATA = $(shell cd $(srcdir); find ciscoIp -type f)
 
+cpdir = $(SIPX_CONFDIR)/ciscoCp
+dist_cp_DATA = $(shell cd $(srcdir); find ciscoCp -type f)
+
 spadir = $(SIPX_CONFDIR)/Ciscospa
 dist_spa_DATA = $(shell cd $(srcdir); find Ciscospa -type f)
 

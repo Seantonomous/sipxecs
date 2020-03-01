@@ -1,0 +1,107 @@
+#if ($phone.lines.size() > 0)
+  #if (!$phone.getSettingValue('Phone/Station_Name'))
+    #set ($alias_array = $phone.lines[0].getUser().getAliases().toArray())
+
+    #if ($alias_array.size() > 0)
+            #set ($alias = $alias_array[0])
+    #else
+            #set ($alias = "-")
+    #end
+  #else
+    #set ($alias = $!phone.getSettingValue('Phone/Station_Name'))
+  #end
+#else
+    #set ($alias = "-")
+#end
+
+#set ($speedDials = $phone.getSpeedDials())
+
+<flat-profile>
+#foreach ($group in $phone.Settings.Values)
+[${group.ProfileName}]
+#foreach ($setting in $group.Values)
+#if ($setting.Name == "Station_Name")
+<Station_Name ua="na">$!{alias}</Station_Name>
+#elseif ($setting.Name == "Provisioning_Protocol" || $setting.Name == "Provisioning_Server_Address")
+#elseif ($setting.Name == "Profile_Rule" || $setting.Name == "Profile_Rule_B")
+#if ($!Provisioning_Server_Address)
+<${setting.Name} ua="na">$!{Provisioning_Protocol}://$!{Provisioning_Server_Address}/$!{setting.Value}</${setting.Name}>
+#else
+<${setting.Name} ua="na">/$!{setting.Value}</${setting.Name}>
+#end
+#else
+#if ($!setting.Value)
+<${setting.Name} ua="na">$!{setting.Value}</${setting.Name}>
+#else
+<${setting.Name} ua="na"/>
+#end
+#end
+#end
+#end
+
+#set ($cur = 1)
+#set ($Integer = 0)
+#foreach ($line in $phone.lines)
+#set ($i = $velocityCount)
+#foreach ($group in $line.Settings.Values)
+[${group.ProfileName}]
+#foreach ($setting in $group.Values)
+#if ($setting.Name == "Keys")
+#set ($start = $cur)
+#set ($end = $start + $Integer.parseInt($setting.Value))
+#foreach ($j in [$start..10])
+#if ($j == $end)
+#set ($cur = $j)
+#break
+#else
+<Extension_${j}_ ua="na">${i}</Extension_${j}_>
+#set ($cur = $j)
+#end
+#end
+#else
+#if ($!setting.Value)
+<${setting.Name}_${i}_ ua="na">$!{setting.Value}</${setting.Name}_${i}_>
+#else
+<${setting.Name}_${i}_ ua="na"/>
+#end
+#end
+#end
+#end
+#end
+
+#if ( $!speedDials )
+#if ($cur < 10)
+#set ($k = 0)
+#foreach ($j in [$cur..10])
+#set ($cur = $cur + 1)
+<Extension_${j}_ ua="na">Disabled</Extension_${j}_>
+<Short_Name_${j}_ ua="na"/>
+<Share_Call_Appearance_${j}_ ua="na"/>
+#if ( $k < $speedDials.size() )
+#if ( $speedDials.get($k).isBlf() )
+<Extended_Function_${j}_ ua="na">fnc=blf+sd+cp;sub=~~rl~C~$!{phone.lines[0].getSettingValue('Ext/User_ID')}@$PROXY;ext=$!{speedDials[$k].getNumber()}@$PROXY;nme=$!{speedDials[$k].getLabel()}</Extended_Function_${j}_>
+
+#else
+<Extended_Function_${j}_ ua="na">fnc=sd;ext=$!{speedDials[$k].getNumber()};nme=$!{speedDials[$k].getLabel()}</Extended_Function_${j}_>
+
+#end
+#else
+<Extended_Function_${j}_ ua="na"/>
+
+#end
+#set ($k = $k + 1)
+#end
+#end
+#else
+#if ($cur < 10)
+#foreach ($j in [$cur..10])
+#set ($cur = $cur + 1)
+<Extension_${j}_ ua="na">Disabled</Extension_${j}_>
+<Short_Name_${j}_ ua="na"/>
+<Share_Call_Appearance_${j}_ ua="na"/>
+<Extended_Function_${j}_ ua="na"/>
+
+#end
+#end
+#end
+</flat-profile>

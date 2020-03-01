@@ -215,4 +215,137 @@
     <property name="maxLineCount" value="12" />
     <property name="psn" value="525G" />
   </bean>
+  
+  <!-- Cisco 88XX Firmware -->
+  <bean id="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_1_1"
+    class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean" />
+  <bean id="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_1_2"
+    class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean" />
+  <bean id="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_2_1"
+    class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean" />
+  <bean id="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_2_3"
+    class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean" />
+  <bean id="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_3_1"
+    class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean" />
+    <bean id="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_3_X"
+      class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean" />
+    
+  <!-- Cisco 88XX phones -->
+  <bean id="CiscoCpModel" class="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel" parent="abstractPhoneModel"
+    abstract="true">
+    <property name="vendor" value="Cisco"/>
+    <property name="restartSupported" value="true" />
+  </bean>
+
+  <bean id="CiscoCpPhone" class="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpPhone" scope="prototype"
+    parent="abstractPhone">
+  </bean>
+
+  <bean id="CiscoCpPhoneStandard" abstract="true" parent="CiscoCpModel">
+    <property name="beanId" value="CiscoCpPhone" />
+    <property name="modelDir" value="ciscoCp" />
+    <property name="profileTemplate" value="ciscoCp/config.vm" />
+  </bean>
+
+  <!-- Cisco 88XX -->
+  <bean id="cisco8865" parent="CiscoCpPhoneStandard">
+    <property name="label" value="Cisco 8865" />
+    <property name="maxLineCount" value="10" />
+    <property name="psn" value="8865" />
+    <property name="versions">
+      <list>
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_1_1"/>
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_1_2"/>
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_2_1"/>
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_2_3"/>
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_3_1"/>
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_3_X"/>
+      </list>
+    </property>
+    <property name="defaultVersion">
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_2_3"/>
+    </property>
+  </bean>
+  <bean id="cisco8861" parent="CiscoCpPhoneStandard">
+    <property name="label" value="Cisco 8861" />
+    <property name="maxLineCount" value="10" />
+    <property name="psn" value="8861" />
+    <property name="versions">
+      <list>
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_1_1"/>
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_1_2"/>
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_2_1"/>
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_2_3"/>
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_3_1"/>
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_3_X"/>
+      </list>
+    </property>
+    <property name="defaultVersion">
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_2_3"/>
+    </property>
+  </bean>
+  <bean id="cisco8851" parent="CiscoCpPhoneStandard">
+    <property name="label" value="Cisco 8851" />
+    <property name="maxLineCount" value="10" />
+    <property name="psn" value="8851" />
+    <property name="versions">
+      <list>
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_1_1"/>
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_1_2"/>
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_2_1"/>
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_2_3"/>
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_3_1"/>
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_3_X"/>
+      </list>
+    </property>
+    <property name="defaultVersion">
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_2_3"/>
+    </property>
+  </bean>
+  <bean id="cisco8845" parent="CiscoCpPhoneStandard">
+    <property name="label" value="Cisco 8845" />
+    <property name="maxLineCount" value="10" />
+    <property name="psn" value="8845" />
+    <property name="versions">
+      <list>
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_1_1"/>
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_2_3"/>
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_3_1"/>
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_3_X"/>
+      </list>
+    </property>
+    <property name="defaultVersion">
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_2_3"/>
+    </property>
+  </bean>
+  <bean id="cisco8841" parent="CiscoCpPhoneStandard">
+    <property name="label" value="Cisco 8841" />
+    <property name="maxLineCount" value="10" />
+    <property name="psn" value="8841" />
+    <property name="versions">
+      <list>
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_1_1"/>
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_1_2"/>
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_2_1"/>
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_2_3"/>
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_3_1"/>
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_3_X"/>
+      </list>
+    </property>
+    <property name="defaultVersion">
+        <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_2_3"/>
+    </property>
+  </bean>
+  
+  <bean id="ciscoCpFirmware" class="org.sipfoundry.sipxconfig.upload.UploadSpecification">
+    <property name="beanId" value="ciscoCpUpload" />
+    <property name="modelFilePath" value="ciscoCp/upload.xml" />
+    <property name="label" value="Cisco 88XX-3PCC Firmware" />
+  </bean>
+  <bean id="ciscoCpUpload" class="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpUpload"
+    scope="prototype" parent="upload">
+    <property name="profileDir">
+      <value>${sysdir.phone}/profile/tftproot</value>
+    </property>
+  </bean>
 </beans>

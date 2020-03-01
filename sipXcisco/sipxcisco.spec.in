@@ -46,6 +46,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_sysconfdir}/sipxpbx/ciscoAta/*
 %{_sysconfdir}/sipxpbx/ciscoIp/*
+%{_sysconfdir}/sipxpbx/ciscoCp/*
 %{_sysconfdir}/sipxpbx/ciscoplus/*
 %{_sysconfdir}/sipxpbx/Ciscospa/*
 %{_sysconfdir}/sipxpbx/linksys/*

@@ -84,6 +84,7 @@ public class Servlet extends HttpServlet {
      * Polycom
      */
     protected static final String POLYCOM_PATH_PREFIX = "/";
+    protected static final String CISCO_PATH_PREFIX = "/";
 
     private static final String POLYCOM_PATH_FORMAT_RE_STR = "^" + POLYCOM_PATH_PREFIX + MAC_RE_STR + "-%s$";
 
@@ -164,6 +165,9 @@ public class Servlet extends HttpServlet {
     private static final String YEALINK_UA_PHONE_MODEL_RE_STR = "(SIP-T[0-9]{2}G)";
     private static final String YEALINK_UA_PHONE_FIRMWARE_RE_STR = "[0-9]+.([0-9]+).[0-9]+.[0-9]+";
     private static final String YEALINK_UA_PHONE_MAC_RE_STR = "([0-9a-f]{2}:){5}[0-9a-f]{2}";
+    
+    private static final String CISCO_UA_PHONE_MODEL_RE_STR_RE = Pattern.compile(
+      String.format("^Cisco-CP-([0-9]{4})-3PCC/([0-9]+.[0-9]+.[0-9]+) \((%s)\)$", MAC_RE_STR));
     
     // First match group is phone model, second firmware
     private static final Pattern YEALINK_UA_MODEL_VERSION_RE = Pattern.compile(String.format("^%s %s %s %s$",
@@ -305,6 +309,22 @@ public class Servlet extends HttpServlet {
         }
     }
     
+    public static class CiscoVelocityCfg {
+
+        Configuration m_config;
+
+        CiscoVelocityCfg(Configuration config) {
+            m_config = config;
+        }
+
+        public String getRootUrlPath() {
+            int port = (m_config.isUseSecure()) ? (m_config.getSecurePort()) : (m_config.getServletPort());
+            String proto = (m_config.isUseSecure()) ? ("https") : ("http");
+            LOG.info("Using " + ((m_config.isUseSecure()) ? ("secure ") : ("non secure")) + " port");
+            return String.format(proto + "://%s:%d%s/", m_config.getHostname(), port, m_config.getServletUriPath());
+        }
+    }
+    
     public static class YealinkVelocityCfg {
 
         Configuration m_config;
@@ -403,6 +423,41 @@ public class Servlet extends HttpServlet {
                 context, yealink_src_dir);
             
 
+        } catch (Exception e) {
+            LOG.error("Velocity initialization error:", e);
+        }
+    }
+    
+    private static void initializeStaticCiscoConfig(Configuration config) {
+        String[] files = ["8841", "8845", "8851", "8861", "8865"];
+        File cisco_src_dir = new File(System.getProperty("conf.dir") + "/ciscoCp");
+        try {
+
+            Properties p = new Properties();
+            p.setProperty("resource.loader", "file");
+            p.setProperty("class.resource.loader.class",
+                    "org.apache.velocity.runtime.resource.loader.FileResourceLoader");
+            p.setProperty("file.resource.loader.path", cisco_src_dir.getAbsolutePath());
+            p.setProperty("runtime.log.logsystem.class", "org.apache.velocity.runtime.log.SimpleLog4JLogSystem");
+            p.setProperty("runtime.log.logsystem.log4j.category", "org.apache.Velocity");            
+            Velocity.init(p);
+
+            Template template = Velocity.getTemplate("default.cfg");
+
+            VelocityContext context = new VelocityContext();
+            context.put("cfg", new CiscoVelocityCfg(config));
+            
+            for (int i = 0; i < files.length; i++) {
+              Writer writer = new FileWriter(new File(config.getTftpPath(), String.format("/%s-3PCC.cfg", files[i])));
+              template.merge(context, writer);
+              writer.flush();
+
+              LOG.info(String.format("Generated Cisco %s-3PCC.cfg from %s.", files[i], cisco_src_dir.getAbsolutePath()));
+            }
+        } catch (ResourceNotFoundException e) {
+            LOG.error("Failed to generate Cisco static configuration file: ", e);
+        } catch (ParseErrorException e) {
+            LOG.error("Failed to generate Cisco 0static configuration file: ", e);
         } catch (Exception e) {
             LOG.error("Velocity initialization error:", e);
         }
@@ -551,6 +606,7 @@ public class Servlet extends HttpServlet {
         
         // Generate Yealink Common Configs
         initializeStaticYealinkConfig(config);
+        initializeStaticCiscoConfig(config);
     }
 
     private static boolean createTftpDirectory(File dir) {
@@ -713,6 +769,10 @@ public class Servlet extends HttpServlet {
                 // if this is a yealink, we also want to generate its mac.cfg now
                 LOG.info("Writing " + phone.mac + ".cfg");
                 writeProfileConfigurationResponse("/" + phone.mac + ".cfg", phone.mac, response);
+            } else if (phone.model.sipxconfig_id.startsWith("cisco")) {
+                // if this is a cisco, we also want to generate its mac.cfg now
+                LOG.info("Writing " + phone.mac + ".cfg");
+                writeProfileConfigurationResponse("/" + phone.mac + ".cfg", phone.mac, response);
             }
         } catch (Exception e) {
             LOG.error("REST HTTPS POST failed:", e);
@@ -814,6 +874,14 @@ public class Servlet extends HttpServlet {
             // MAC, Model, & Version
             phone.mac = extractMac(path, POLYCOM_PATH_PREFIX);
             if (null == phone.mac || !extractPolycomModelAndVersion(phone, useragent)) {
+                writeUiForwardResponse(request, response);
+                return;
+            }
+        } else if (CISCO_UA_PHONE_MODEL_RE_STR_RE.matcher(useragent).matches()) {
+            phone = new DetectedPhone();
+            
+            phone.mac = extractMac(path, CISCO_PATH_PREFIX);
+            if (null == phone.mac || !extractCiscoModelAndVersion(phone, useragent)) {
                 writeUiForwardResponse(request, response);
                 return;
             }
@@ -1005,6 +1073,23 @@ public class Servlet extends HttpServlet {
             }
             phone.version = useragent.substring(i1 + POLYCOM_UA_DELIMITER.length(), i2);
         }
+
+        return true;
+    }
+    
+    protected static boolean extractCiscoModelAndVersion(DetectedPhone phone, String useragent) {
+
+        if (null == useragent || null == phone
+        // TODO regexp match, makes below parsing easier --> !
+        // POLYCOM_UA_RE.matcher(useragent).matches()
+        ) {
+            return false;
+        }
+        
+        Matcher matcher = CISCO_UA_PHONE_MODEL_RE_STR_RE.matcher(useragent);
+        
+        phone.model = lookupPhoneModel(m.group(1));
+        phone.version = m.group(2);
 
         return true;
     }
@@ -1254,6 +1339,13 @@ public class Servlet extends HttpServlet {
         PHONE_MODEL_MAP.put("SIP-T46G", new PhoneModel("yealinkPhoneSIPT46G", "Yealink T46G"));
         PHONE_MODEL_MAP.put("SIP-T48G", new PhoneModel("yealinkPhoneSIPT48G", "Yealink T48G"));
         PHONE_MODEL_MAP.put("SIP-T49G", new PhoneModel("yealinkPhoneSIPT49G", "Yealink T49G"));
+        
+        // Cisco model map
+        PHONE_MODEL_MAP.put("8841", new PhoneModel("cisco8841", "Cisco 8841"));
+        PHONE_MODEL_MAP.put("8845", new PhoneModel("cisco8845", "Cisco 8845"));
+        PHONE_MODEL_MAP.put("8851", new PhoneModel("cisco8851", "Cisco 8851"));
+        PHONE_MODEL_MAP.put("8861", new PhoneModel("cisco8861", "Cisco 8861"));
+        PHONE_MODEL_MAP.put("8865", new PhoneModel("cisco8865", "Cisco 8865"));
     }
 
     public static void main(String[] args) throws Exception {
