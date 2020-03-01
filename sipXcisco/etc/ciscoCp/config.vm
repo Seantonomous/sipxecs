@@ -22,10 +22,9 @@
 #foreach ($setting in $group.Values)
 #if ($setting.Name == "Station_Name")
 <Station_Name ua="na">$!{alias}</Station_Name>
-#elseif ($setting.Name == "Provisioning_Protocol" || $setting.Name == "Provisioning_Server_Address")
 #elseif ($setting.Name == "Profile_Rule" || $setting.Name == "Profile_Rule_B")
-#if ($!Provisioning_Server_Address)
-<${setting.Name} ua="na">$!{Provisioning_Protocol}://$!{Provisioning_Server_Address}/$!{setting.Value}</${setting.Name}>
+#if ($!phone.getSettingValue("Provisioning/Provisioning_Server_Address"))
+<${setting.Name} ua="na">$!phone.getSettingValue("Provisioning/Provisioning_Protocol")://$!phone.getSettingValue("Provisioning/Provisioning_Server_Address")/$!{setting.Value}</${setting.Name}>
 #else
 <${setting.Name} ua="na">/$!{setting.Value}</${setting.Name}>
 #end

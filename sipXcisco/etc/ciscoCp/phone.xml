@@ -18,29 +18,6 @@
       <type refid="yes-no" />
       <value>yes</value>
     </setting>
-    <setting name="Provisioning_Protocol">
-      <label>Provisioning Protocol</label>
-      <profileName>System/System_Configuration</profileName>
-      <type>
-        <enum>
-          <option>
-            <value>http</value>
-          </option>
-          <option>
-            <value>https</value>
-          </option>
-          <option>
-            <value>tftp</value>
-          </option>
-        </enum>
-      </type>
-      <value>http</value>
-    </setting>
-    <setting name="Provisioning_Server_Address">
-      <label>Alternate Server Name</label>
-      <profileName>System/System_Configuration</profileName>
-      <value />
-    </setting>
     <setting name="Enable_Protocol">
       <label>Enable Protocol</label>
       <profileName>System/System_Configuration</profileName>
@@ -1235,6 +1212,29 @@
       <type refid="yes-no" />
       <value>yes</value>
     </setting>
+    <setting name="Provisioning_Protocol">
+      <label>Provisioning Protocol</label>
+      <profileName>Provisioning/Configuration_Profile</profileName>
+      <type>
+        <enum>
+          <option>
+            <value>http</value>
+          </option>
+          <option>
+            <value>https</value>
+          </option>
+          <option>
+            <value>tftp</value>
+          </option>
+        </enum>
+      </type>
+      <value>http</value>
+    </setting>
+    <setting name="Provisioning_Server_Address">
+      <label>Provisioning Server Name</label>
+      <profileName>Provisioning/Configuration_Profile</profileName>
+      <value />
+    </setting>
     <setting name="Resync_On_Reset" advanced="yes">
       <label>Resync On Reset</label>
       <profileName>Provisioning/Configuration_Profile</profileName>
@@ -1514,11 +1514,6 @@
     </setting>
     <setting name="GPP_O" advanced="yes">
       <label>GPP O</label>
-      <profileName>Provisioning/General_Purpose_Parameters</profileName>
-      <value />
-    </setting>
-    <setting name="GPP_P" advanced="yes">
-      <label>GPP P</label>
       <profileName>Provisioning/General_Purpose_Parameters</profileName>
       <value />
     </setting>

@@ -24,6 +24,7 @@ extends Phone {
     }
 
     protected void copyFiles(ProfileLocation profileLocation) {
+      /*
         CiscoCpModel ciscoMppModel = (CiscoCpModel)this.getModel();
         String string = ciscoMppModel.getDefaultConfigName();
         if (null == string) {
@@ -31,6 +32,7 @@ extends Phone {
         }
         String string2 = ciscoMppModel.getModelDir() + File.separator + "default.cfg";
         this.getProfileGenerator().copy(profileLocation, string2, string);
+      */
     }
 
     public String getProfileFilename() {

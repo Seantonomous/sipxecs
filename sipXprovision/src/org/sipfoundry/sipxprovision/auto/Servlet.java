@@ -166,8 +166,8 @@ public class Servlet extends HttpServlet {
     private static final String YEALINK_UA_PHONE_FIRMWARE_RE_STR = "[0-9]+.([0-9]+).[0-9]+.[0-9]+";
     private static final String YEALINK_UA_PHONE_MAC_RE_STR = "([0-9a-f]{2}:){5}[0-9a-f]{2}";
     
-    private static final String CISCO_UA_PHONE_MODEL_RE_STR_RE = Pattern.compile(
-      String.format("^Cisco-CP-([0-9]{4})-3PCC/([0-9]+.[0-9]+.[0-9]+) \((%s)\)$", MAC_RE_STR));
+    private static final Pattern CISCO_UA_PHONE_MODEL_RE_STR_RE = Pattern.compile(
+      String.format("^Cisco-CP-([0-9]{4})-3PCC/([0-9]+.[0-9]+.[0-9]+) \\((%s)\\)$", MAC_RE_STR));
     
     // First match group is phone model, second firmware
     private static final Pattern YEALINK_UA_MODEL_VERSION_RE = Pattern.compile(String.format("^%s %s %s %s$",
@@ -323,6 +323,10 @@ public class Servlet extends HttpServlet {
             LOG.info("Using " + ((m_config.isUseSecure()) ? ("secure ") : ("non secure")) + " port");
             return String.format(proto + "://%s:%d%s/", m_config.getHostname(), port, m_config.getServletUriPath());
         }
+        
+        public String getRootUrl() {
+            return m_config.getHostname();
+        }
     }
     
     public static class YealinkVelocityCfg {
@@ -429,8 +433,11 @@ public class Servlet extends HttpServlet {
     }
     
     private static void initializeStaticCiscoConfig(Configuration config) {
-        String[] files = ["8841", "8845", "8851", "8861", "8865"];
+        String[] files = {"8841", "8845", "8851", "8861", "8865"};
         File cisco_src_dir = new File(System.getProperty("conf.dir") + "/ciscoCp");
+        
+        LOG.info("Cisco conf dir: " + cisco_src_dir.getAbsolutePath());
+        
         try {
 
             Properties p = new Properties();
@@ -439,16 +446,18 @@ public class Servlet extends HttpServlet {
                     "org.apache.velocity.runtime.resource.loader.FileResourceLoader");
             p.setProperty("file.resource.loader.path", cisco_src_dir.getAbsolutePath());
             p.setProperty("runtime.log.logsystem.class", "org.apache.velocity.runtime.log.SimpleLog4JLogSystem");
-            p.setProperty("runtime.log.logsystem.log4j.category", "org.apache.Velocity");            
-            Velocity.init(p);
-
-            Template template = Velocity.getTemplate("default.cfg");
+            p.setProperty("runtime.log.logsystem.log4j.category", "org.apache.Velocity");    
+            
+            VelocityEngine engine = new VelocityEngine();
+            engine.init(p);
+            
+            Template template = engine.getTemplate("default.cfg.vm");
 
             VelocityContext context = new VelocityContext();
             context.put("cfg", new CiscoVelocityCfg(config));
             
             for (int i = 0; i < files.length; i++) {
-              Writer writer = new FileWriter(new File(config.getTftpPath(), String.format("/%s-3PCC.cfg", files[i])));
+              Writer writer = new FileWriter(new File(config.getTftpPath(), String.format("/%s-3PCC.xml", files[i])));
               template.merge(context, writer);
               writer.flush();
 
@@ -1088,10 +1097,14 @@ public class Servlet extends HttpServlet {
         
         Matcher matcher = CISCO_UA_PHONE_MODEL_RE_STR_RE.matcher(useragent);
         
-        phone.model = lookupPhoneModel(m.group(1));
-        phone.version = m.group(2);
-
-        return true;
+        if (matcher.matches()) {
+          phone.model = lookupPhoneModel(matcher.group(1));
+          phone.version = matcher.group(2);
+          
+          return true;
+        } else {
+          return false;
+        }
     }
 
     protected static boolean extractYealinkModelAndVersion(DetectedPhone phone, String useragent) {
@@ -1341,11 +1354,11 @@ public class Servlet extends HttpServlet {
         PHONE_MODEL_MAP.put("SIP-T49G", new PhoneModel("yealinkPhoneSIPT49G", "Yealink T49G"));
         
         // Cisco model map
-        PHONE_MODEL_MAP.put("8841", new PhoneModel("cisco8841", "Cisco 8841"));
-        PHONE_MODEL_MAP.put("8845", new PhoneModel("cisco8845", "Cisco 8845"));
-        PHONE_MODEL_MAP.put("8851", new PhoneModel("cisco8851", "Cisco 8851"));
-        PHONE_MODEL_MAP.put("8861", new PhoneModel("cisco8861", "Cisco 8861"));
-        PHONE_MODEL_MAP.put("8865", new PhoneModel("cisco8865", "Cisco 8865"));
+        PHONE_MODEL_MAP.put("8841", new PhoneModel("ciscoCp8841", "Cisco 8841 3PCC"));
+        PHONE_MODEL_MAP.put("8845", new PhoneModel("ciscoCp8845", "Cisco 8845 3PCC"));
+        PHONE_MODEL_MAP.put("8851", new PhoneModel("ciscoCp8851", "Cisco 8851 3PCC"));
+        PHONE_MODEL_MAP.put("8861", new PhoneModel("ciscoCp8861", "Cisco 8861 3PCC"));
+        PHONE_MODEL_MAP.put("8865", new PhoneModel("ciscoCp8865", "Cisco 8865 3PCC"));
     }
 
     public static void main(String[] args) throws Exception {

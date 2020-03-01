@@ -248,8 +248,8 @@
   </bean>
 
   <!-- Cisco 88XX -->
-  <bean id="cisco8865" parent="CiscoCpPhoneStandard">
-    <property name="label" value="Cisco 8865" />
+  <bean id="ciscoCp8865" parent="CiscoCpPhoneStandard">
+    <property name="label" value="Cisco 8865 3PCC" />
     <property name="maxLineCount" value="10" />
     <property name="psn" value="8865" />
     <property name="versions">
@@ -266,8 +266,8 @@
         <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_2_3"/>
     </property>
   </bean>
-  <bean id="cisco8861" parent="CiscoCpPhoneStandard">
-    <property name="label" value="Cisco 8861" />
+  <bean id="ciscoCp8861" parent="CiscoCpPhoneStandard">
+    <property name="label" value="Cisco 8861 3PCC" />
     <property name="maxLineCount" value="10" />
     <property name="psn" value="8861" />
     <property name="versions">
@@ -284,8 +284,8 @@
         <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_2_3"/>
     </property>
   </bean>
-  <bean id="cisco8851" parent="CiscoCpPhoneStandard">
-    <property name="label" value="Cisco 8851" />
+  <bean id="ciscoCp8851" parent="CiscoCpPhoneStandard">
+    <property name="label" value="Cisco 8851 3PCC" />
     <property name="maxLineCount" value="10" />
     <property name="psn" value="8851" />
     <property name="versions">
@@ -302,8 +302,8 @@
         <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_2_3"/>
     </property>
   </bean>
-  <bean id="cisco8845" parent="CiscoCpPhoneStandard">
-    <property name="label" value="Cisco 8845" />
+  <bean id="ciscoCp8845" parent="CiscoCpPhoneStandard">
+    <property name="label" value="Cisco 8845 3PCC" />
     <property name="maxLineCount" value="10" />
     <property name="psn" value="8845" />
     <property name="versions">
@@ -318,8 +318,8 @@
         <ref local="org.sipfoundry.sipxconfig.phone.ciscoCp.CiscoCpModel.VERSION_11_2_3"/>
     </property>
   </bean>
-  <bean id="cisco8841" parent="CiscoCpPhoneStandard">
-    <property name="label" value="Cisco 8841" />
+  <bean id="ciscoCp8841" parent="CiscoCpPhoneStandard">
+    <property name="label" value="Cisco 8841 3PCC" />
     <property name="maxLineCount" value="10" />
     <property name="psn" value="8841" />
     <property name="versions">

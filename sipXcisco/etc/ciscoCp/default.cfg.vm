@@ -4,12 +4,20 @@
 #else
    #set( $optional_root_url_path = "" )
 #end
+
+#if(${cfg.RootUrl})
+   #set( $optional_root_url = "${cfg.RootUrl}" )
+#else
+   #set( $optional_root_url = "" )
+#end
+
 <flat-profile>
-  <Profile_Rule ua="na">${optional_root_url_path}/$MA.cfg</Profile_Rule>
+  <Profile_Rule ua="na">${optional_root_url_path}$MA.cfg</Profile_Rule>
   <Profile_Rule_B ua="na" />
   <Profile_Rule_C ua="na" />
   <Profile_Rule_D ua="na" />
   <User_Password_Prompt ua="na">No</User_Password_Prompt>
   <Resync_Error_Retry_Delay ua="na">30,60,180,1800,3600</Resync_Error_Retry_Delay>
   <Resync_Fails_On_FNF ua="na">yes</Resync_Fails_On_FNF>
+  <GPP_P ua="na">${optional_root_url}</GPP_P>
 </flat-profile>

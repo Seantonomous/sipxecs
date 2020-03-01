@@ -286,6 +286,11 @@ extends CiscoCp {
       public String setProfileRuleB() {
           return "$MA.cfg";
       }
+      
+      @SettingEntry(path="Provisioning/Provisioning_Server_Address")
+      public String setProvisioningServerAddress() {
+          return "$P";
+      }
     }
 
     public static class MainProfile extends Profile {
