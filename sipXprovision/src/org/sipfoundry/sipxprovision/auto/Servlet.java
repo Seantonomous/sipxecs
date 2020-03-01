@@ -707,6 +707,8 @@ public class Servlet extends HttpServlet {
                 return formatPolycomVersion(phone.version);
             } else if (phone.model.sipxconfig_id.contains("yealink")) {
                 return formatYealinkVersion(phone.version);
+            } else if (phone.model.sipxconfig_id.contains("cisco")) {
+                return formatCiscoVersion(phone.version);
             }
         }
         return "";
@@ -724,6 +726,23 @@ public class Servlet extends HttpServlet {
             return version.substring(0, 5);
         }
         return (new StringBuilder(version.substring(0, 3).concat(".X"))).toString();
+    }
+    
+    /**
+     * Format the Cisco version as defined in PolycomModel bean
+     *
+     * @param version
+     * @return
+     */
+    protected static String formatCiscoVersion(String version) {
+        String major = version.substring(0, 3);
+        if(major.equals("11.1") || major.equals("11.2")) {
+            return version.substring(0, 5);
+        } else if(version.equals("11.3.1")) {
+            return version.substring(0, 5);
+        } else {
+            return (new StringBuilder(major.concat(".X"))).toString();
+        }
     }
     
     /**
